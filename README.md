@@ -5,6 +5,8 @@ practice of AI-assisted, agentic software development. Built with Next.js, TypeS
 Tailwind CSS v4, and shadcn-style components, themed with the **Vibe Agentic Glass**
 design system (deep-space glassmorphism with neon cyan/violet accents).
 
+**🔗 Live demo: [vibe-docs-ai.vercel.app](https://vibe-docs-ai.vercel.app/)**
+
 ## Documentation
 
 All docs live in [`docs/`](./docs):
@@ -103,6 +105,10 @@ it in `fa`.
 
 ## Deployment
 
-The repo is configured for Vercel via `vercel.json` (build `pnpm build`, output `out/`).
-Push to a connected Git repository or run `vercel deploy`. The output is fully static and
-can also be hosted on any static host (Netlify, GitHub Pages, S3, …).
+Live at **[vibe-docs-ai.vercel.app](https://vibe-docs-ai.vercel.app/)**.
+
+The repo is configured for Vercel via `vercel.json` — it deploys as a **static site**
+(`framework: null`, build `pnpm build`, output `out/`) so Vercel serves the exported files
+directly rather than running the Next.js server builder. Push to a connected Git repository
+or run `vercel deploy`. The output is fully static and can also be hosted on any static host
+(Netlify, GitHub Pages, S3, …).
