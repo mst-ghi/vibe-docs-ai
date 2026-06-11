@@ -1,0 +1,224 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Vibe Agentic Glass — design tokens.
+ * The site is dark-first (deep-space black with neon cyan/violet accents) but
+ * ships a light theme too. shadcn semantic tokens are mapped onto the palette so
+ * the existing UI primitives (Button, etc.) inherit the look automatically.
+ */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-heading: var(--font-sans);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-cyan: var(--neon-cyan);
+  --color-violet: var(--neon-violet);
+  --color-glass: var(--surface-glass);
+  --color-terminal: var(--terminal-gray);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+}
+
+/* Light theme — keeps cyan/violet accents on a cool off-white canvas. */
+:root {
+  --radius: 0.75rem;
+
+  --background: #f4f7f6;
+  --foreground: #0d1513;
+  --card: rgba(255, 255, 255, 0.72);
+  --card-foreground: #0d1513;
+  --popover: #ffffff;
+  --popover-foreground: #0d1513;
+  --primary: #009e8c;
+  --primary-foreground: #ffffff;
+  --secondary: #7c3aed;
+  --secondary-foreground: #ffffff;
+  --muted: #e6ebe9;
+  --muted-foreground: #54635f;
+  --accent: #e6faf6;
+  --accent-foreground: #00504a;
+  --destructive: #d92d20;
+  --border: rgba(13, 21, 19, 0.1);
+  --input: rgba(13, 21, 19, 0.12);
+  --ring: #009e8c;
+
+  --neon-cyan: #009e8c;
+  --neon-violet: #7c3aed;
+  --surface-glass: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(13, 21, 19, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --terminal-gray: #54635f;
+  --hero-grid: rgba(13, 21, 19, 0.04);
+
+  --sidebar: rgba(255, 255, 255, 0.7);
+  --sidebar-foreground: #0d1513;
+  --sidebar-primary: #009e8c;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e6faf6;
+  --sidebar-accent-foreground: #00504a;
+  --sidebar-border: rgba(13, 21, 19, 0.08);
+  --sidebar-ring: #009e8c;
+}
+
+/* Dark theme — the canonical Vibe Agentic Glass look. */
+.dark {
+  --background: #000000;
+  --foreground: #dbe4e1;
+  --card: rgba(255, 255, 255, 0.03);
+  --card-foreground: #dbe4e1;
+  --popover: #0d1513;
+  --popover-foreground: #dbe4e1;
+  --primary: #23f7dd;
+  --primary-foreground: #00201c;
+  --secondary: #a855f7;
+  --secondary-foreground: #ffffff;
+  --muted: #19211f;
+  --muted-foreground: #b9cac5;
+  --accent: #151d1b;
+  --accent-foreground: #e5fff8;
+  --destructive: #ff4d4d;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.12);
+  --ring: #23f7dd;
+
+  --neon-cyan: #23f7dd;
+  --neon-violet: #a855f7;
+  --surface-glass: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --terminal-gray: #a3a3a3;
+  --hero-grid: rgba(255, 255, 255, 0.04);
+
+  --sidebar: rgba(255, 255, 255, 0.02);
+  --sidebar-foreground: #dbe4e1;
+  --sidebar-primary: #23f7dd;
+  --sidebar-primary-foreground: #00201c;
+  --sidebar-accent: #151d1b;
+  --sidebar-accent-foreground: #e5fff8;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-ring: #23f7dd;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+  html {
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Translucent obsidian/glass slab — the core surface of the design system. */
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease-in-out;
+  }
+  .glass-card:hover {
+    border-color: color-mix(in srgb, var(--neon-cyan) 40%, transparent);
+    background: color-mix(in srgb, var(--neon-cyan) 3%, var(--glass-bg));
+    transform: translateY(-4px);
+  }
+
+  .label-caps {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .neon-glow {
+    box-shadow: 0 0 24px color-mix(in srgb, var(--neon-cyan) 35%, transparent);
+  }
+  .violet-glow {
+    box-shadow: 0 0 24px color-mix(in srgb, var(--neon-violet) 30%, transparent);
+  }
+}
+
+/* Ambient grid + radial bloom used behind hero sections. */
+.vibe-backdrop {
+  background-image:
+    radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      color-mix(in srgb, var(--neon-cyan) 12%, transparent),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 60% 50% at 90% 20%,
+      color-mix(in srgb, var(--neon-violet) 12%, transparent),
+      transparent
+    ),
+    linear-gradient(var(--hero-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hero-grid) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    100% 100%,
+    44px 44px,
+    44px 44px;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(4deg);
+  }
+}
+.orb-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+[dir="rtl"] .label-caps {
+  letter-spacing: 0.05em;
+}

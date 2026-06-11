@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VibeDocs AI - Skill Guide 1.3</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #000000;
+            color: #dbe4e1;
+            font-family: 'Hanken Grotesk', sans-serif;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .neon-glow-cyan:hover {
+            box-shadow: 0 0 20px rgba(35, 247, 221, 0.2);
+            border-color: rgba(35, 247, 221, 0.4);
+        }
+        .terminal-cursor::after {
+            content: '_';
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .asymmetric-grid {
+            display: grid;
+            grid-template-columns: 260px 1fr 300px;
+        }
+        @media (max-width: 1024px) {
+            .asymmetric-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-container": "#ffda53",
+                      "surface-container-highest": "#2e3634",
+                      "outline": "#849490",
+                      "primary-fixed": "#31fde3",
+                      "on-primary-fixed-variant": "#005047",
+                      "neon-cyan": "#23F7DD",
+                      "secondary-container": "#571bc1",
+                      "on-surface": "#dbe4e1",
+                      "primary-container": "#23f7dd",
+                      "background": "#0d1513",
+                      "tertiary-fixed-dim": "#e7c43e",
+                      "error": "#ffb4ab",
+                      "secondary-fixed-dim": "#d0bcff",
+                      "on-error-container": "#ffdad6",
+                      "surface-bright": "#323b39",
+                      "secondary": "#d0bcff",
+                      "on-surface-variant": "#b9cac5",
+                      "neon-violet": "#A855F7",
+                      "surface-variant": "#2e3634",
+                      "inverse-surface": "#dbe4e1",
+                      "on-background": "#dbe4e1",
+                      "surface-container-high": "#232c2a",
+                      "on-tertiary-container": "#745f00",
+                      "inverse-on-surface": "#2a3230",
+                      "on-primary-fixed": "#00201c",
+                      "background-deep": "#000000",
+                      "on-primary": "#003730",
+                      "primary": "#e5fff8",
+                      "on-secondary-container": "#c4abff",
+                      "error-container": "#93000a",
+                      "inverse-primary": "#006b5e",
+                      "on-secondary-fixed-variant": "#5516be",
+                      "surface-dim": "#0d1513",
+                      "surface-container-lowest": "#08100e",
+                      "surface-container-low": "#151d1b",
+                      "on-tertiary-fixed-variant": "#554500",
+                      "surface-container": "#19211f",
+                      "terminal-gray": "#A3A3A3",
+                      "surface": "#0d1513",
+                      "on-secondary-fixed": "#23005c",
+                      "tertiary": "#fff8ef",
+                      "surface-tint": "#00dfc7",
+                      "on-secondary": "#3c0091",
+                      "error-red": "#FF4D4D",
+                      "primary-fixed-dim": "#00dfc7",
+                      "secondary-fixed": "#e9ddff",
+                      "outline-variant": "#3a4a46",
+                      "on-tertiary-fixed": "#231b00",
+                      "on-error": "#690005",
+                      "on-primary-container": "#006d61",
+                      "on-tertiary": "#3b2f00",
+                      "tertiary-fixed": "#ffe17a",
+                      "surface-glass": "rgba(255, 255, 255, 0.03)"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "unit": "8px",
+                      "margin-desktop": "64px",
+                      "margin-mobile": "16px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Hanken Grotesk"],
+                      "label-caps": ["JetBrains Mono"],
+                      "body-md": ["Hanken Grotesk"],
+                      "headline-lg": ["Hanken Grotesk"],
+                      "display-lg": ["Hanken Grotesk"],
+                      "code-md": ["JetBrains Mono"],
+                      "headline-lg-mobile": ["Hanken Grotesk"],
+                      "headline-sm": ["Hanken Grotesk"],
+                      "body-lg": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                      "code-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background-deep">
+<!-- TopNavBar -->
+<nav class="bg-surface-glass backdrop-blur-xl border-b border-white/10 docked full-width top-0 sticky z-50 h-16 flex items-center">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-headline-sm font-headline-sm font-bold text-primary tracking-tighter">VibeDocs AI</span>
+<div class="hidden md:flex gap-6">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors text-label-caps font-label-caps" href="#">Docs</a>
+<a class="text-neon-cyan font-bold border-b-2 border-neon-cyan pb-1 text-label-caps font-label-caps" href="#">Skill Guides</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors text-label-caps font-label-caps" href="#">Roadmap</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors text-label-caps font-label-caps" href="#">Changelog</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-neon-cyan">dark_mode</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-neon-cyan">account_circle</span>
+</div>
+</div>
+</nav>
+<div class="asymmetric-grid min-h-screen">
+<!-- SideNavBar -->
+<aside class="bg-surface-container-lowest/80 backdrop-blur-2xl border-r border-white/5 fixed left-0 top-16 h-[calc(100vh-64px)] w-64 hidden lg:flex flex-col py-8 gap-4 px-6 overflow-y-auto">
+<div class="mb-6">
+<h3 class="text-headline-sm font-headline-sm text-primary">System Core</h3>
+<p class="text-label-caps font-label-caps text-terminal-gray opacity-60">v2.0.4-alpha</p>
+</div>
+<nav class="flex flex-col gap-2">
+<div class="flex items-center gap-3 p-2 text-terminal-gray hover:bg-surface-glass rounded-lg cursor-pointer transition-all duration-300">
+<span class="material-symbols-outlined">terminal</span>
+<span class="text-label-caps font-label-caps">Introduction</span>
+</div>
+<div class="flex items-center gap-3 p-2 text-terminal-gray hover:bg-surface-glass rounded-lg cursor-pointer transition-all duration-300">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="text-label-caps font-label-caps">Core Concepts</span>
+</div>
+<div class="flex items-center gap-3 p-2 bg-primary-container/10 text-neon-cyan border-r-2 border-neon-cyan translate-x-1 transition-transform">
+<span class="material-symbols-outlined">bolt</span>
+<span class="text-label-caps font-label-caps">Vibe Coding</span>
+</div>
+<div class="flex items-center gap-3 p-2 text-terminal-gray hover:bg-surface-glass rounded-lg cursor-pointer transition-all duration-300">
+<span class="material-symbols-outlined">psychology</span>
+<span class="text-label-caps font-label-caps">AI Agents</span>
+</div>
+<div class="flex items-center gap-3 p-2 text-terminal-gray hover:bg-surface-glass rounded-lg cursor-pointer transition-all duration-300">
+<span class="material-symbols-outlined">folder_open</span>
+<span class="text-label-caps font-label-caps">Resource Hub</span>
+</div>
+<div class="flex items-center gap-3 p-2 text-terminal-gray hover:bg-surface-glass rounded-lg cursor-pointer transition-all duration-300">
+<span class="material-symbols-outlined">shield</span>
+<span class="text-label-caps font-label-caps">Security</span>
+</div>
+</nav>
+<div class="mt-auto pt-6 border-t border-white/5">
+<button class="w-full py-3 bg-neon-cyan text-black font-bold text-label-caps font-label-caps rounded-lg hover:shadow-[0_0_15px_rgba(35,247,221,0.5)] transition-all">
+                    Join Community
+                </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 px-8 md:px-16 py-12">
+<header class="max-w-4xl mb-16">
+<div class="flex items-center gap-4 mb-4">
+<span class="px-3 py-1 bg-neon-violet/20 border border-neon-violet/40 text-neon-violet text-label-caps font-label-caps rounded-full text-[10px]">Skill Guide 1.3</span>
+<span class="text-terminal-gray text-label-caps font-label-caps">Last Updated: Oct 2024</span>
+</div>
+<h1 class="text-display-lg font-display-lg text-primary mb-6">On-Demand Workflows</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl">
+                    Master the orchestration of transient agentic environments. Section 1.3 focuses on the protocol for initializing, validating, and committing high-velocity skill stacks.
+                </p>
+</header>
+<div class="relative mb-24 rounded-2xl overflow-hidden h-[400px]">
+<img class="w-full h-full object-cover" data-alt="A futuristic digital ocean scene inspired by MultiversX, featuring deep emerald and cyan glowing light reflecting off a dark, rippling sea under a pitch-black night sky. The horizon line is sharp and intense with a centralized neon glow that disperses into the mist. The overall aesthetic is elite, high-performance, and atmospheric, utilizing glassmorphism-ready lighting and deep space black foundations for a premium technological feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6Qvf5axbhBJDIge32GdsZbwQRYpZKGBjdL6RJh_QARFn3dwLh9zUVxPzBhVlMuB8sGD8ZRejgYO26NGyrSWbzf87fd9wCGfSwXoOyaQ4OtsUtFsrm6KDtI8EmSuH40vomUDX9eAHdX2mHtuF3g7vgFmRe7edDDsMvLXx55JUf-ebjxNq-A9dxzneLR2SjCyBM6Qf1K63pRyXvKw9u8RZQNFGHaRzJ7U-g380uSag_Scv0yNVUziIWtZ9Ay0vCPGraabco-YvSR_g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background-deep via-transparent to-transparent"></div>
+<div class="absolute bottom-8 left-8">
+<span class="text-label-caps font-label-caps text-neon-cyan bg-black/50 backdrop-blur-md px-4 py-2 border border-neon-cyan/30 rounded-lg">Protocol Visualizer: Active</span>
+</div>
+</div>
+<!-- Bento Grid Tutorial -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-24">
+<!-- Step 1 -->
+<div class="md:col-span-7 glass-card p-8 rounded-2xl neon-glow-cyan">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full border border-neon-cyan flex items-center justify-center text-neon-cyan font-bold">01</div>
+<h3 class="text-headline-sm font-headline-sm text-primary">Environment Initialization</h3>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-neon-cyan rounded-full animate-pulse"></div>
+<span class="text-label-caps font-label-caps text-neon-cyan text-[10px]">Live Agent</span>
+</div>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6">
+                        Define the workspace manifest. The AI agent requires specific context injection before it can begin processing the local environment for Vibe Coding.
+                    </p>
+<div class="bg-black/80 rounded-lg p-4 border border-white/5 font-code-md text-code-md text-terminal-gray">
+<div class="flex items-center justify-between mb-4">
+<span class="text-white/40 text-[10px]">TERMINAL: ACTIVE_CORE</span>
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+</div>
+<p class="text-neon-cyan mb-1">$ vibe init --stack "agentic-v2"</p>
+<p class="text-on-surface-variant mb-1">&gt;&gt; Initializing kernel...</p>
+<p class="text-neon-violet mb-1">&gt;&gt; Handshake successful. Agent "Specter" online.</p>
+<p class="terminal-cursor text-white">&gt;&gt; Listening for prompt</p>
+</div>
+</div>
+<!-- Status Panel -->
+<div class="md:col-span-5 glass-card p-8 rounded-2xl border-neon-violet/20 flex flex-col justify-center">
+<div class="mb-6">
+<h4 class="text-label-caps font-label-caps text-neon-violet mb-2">Agent Instructions</h4>
+<ul class="space-y-3">
+<li class="flex gap-3 text-body-md font-body-md text-on-surface-variant">
+<span class="material-symbols-outlined text-neon-violet text-sm">check_circle</span>
+                                Ensure kernel v2.0.4 is active.
+                            </li>
+<li class="flex gap-3 text-body-md font-body-md text-on-surface-variant">
+<span class="material-symbols-outlined text-neon-violet text-sm">check_circle</span>
+                                Sync local skill definitions.
+                            </li>
+<li class="flex gap-3 text-body-md font-body-md text-on-surface-variant">
+<span class="material-symbols-outlined text-neon-violet text-sm">radio_button_unchecked</span>
+                                Await manual confirmation.
+                            </li>
+</ul>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="md:col-span-12 glass-card p-8 rounded-2xl flex flex-col md:flex-row gap-8 items-center">
+<div class="w-full md:w-1/3">
+<div class="w-12 h-12 rounded-full border border-neon-violet flex items-center justify-center text-neon-violet font-bold mb-4">02</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-4">Holographic Validation</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">
+                            Visualize the stack before execution. The Protocol utilizes 3D geometric reasoning to check for logic collisions.
+                        </p>
+</div>
+<div class="w-full md:w-2/3 h-64 bg-surface-container-low rounded-xl overflow-hidden relative">
+<img class="w-full h-full object-cover opacity-50" data-alt="Abstract 3D holographic rendering of organic geometry spheres and toroids floating in a dark vacuum. The shapes are defined by thin, vibrant strokes of cyan and violet light, creating a sense of three-dimensional depth and complex non-linear reasoning. The lighting is sophisticated, with semi-transparent surfaces and soft backdrop blurs consistent with a high-end tactical HUD aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6hJuFLNe7R8K10UrMHUjwgfthSnNSPE49pQiNTLU9mS1bYzbapuZvDvS9pjNFwwffFIyx7LoMu1v0Le4HwlhXL1ybZ4L3qnbuW_hwArRAlzjAZv0PRgqMIRQ9bffTbgJ010UBLjp3DmaWa4s8FNnrnsdUgEezBJuqfLZXNvsr4vcHOL2TKI_T9XO3jWDKdmxh6lKewUX5wZvRqDeqZ5k66yU6oBf3hVTTPjKoxHZtt5CsENs7XcKEt7wPR0XKH6x7Dz0sN7W9Hkk"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="px-6 py-3 glass-card rounded-full flex items-center gap-4">
+<span class="material-symbols-outlined text-neon-cyan animate-spin">cyclone</span>
+<span class="text-label-caps font-label-caps text-primary">Simulating Workflow...</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="mt-24 pt-12 border-t border-outline-variant/30 grid grid-cols-1 md:grid-cols-4 gap-gutter pb-12">
+<div class="md:col-span-2">
+<span class="text-headline-sm font-headline-sm text-primary mb-4 block">Vibe Coding Protocol</span>
+<p class="text-body-md font-body-md text-terminal-gray max-w-sm">
+                        © 2024 Vibe Coding Protocol. Engineered for the Internet-Scale Era.
+                    </p>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-label-caps font-label-caps text-on-surface">Ecosystem</span>
+<a class="text-terminal-gray hover:text-neon-cyan transition-colors text-label-caps font-label-caps" href="#">X.com</a>
+<a class="text-terminal-gray hover:text-neon-cyan transition-colors text-label-caps font-label-caps" href="#">GitHub</a>
+<a class="text-terminal-gray hover:text-neon-cyan transition-colors text-label-caps font-label-caps" href="#">Discord</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-label-caps font-label-caps text-on-surface">Resources</span>
+<a class="text-terminal-gray hover:text-neon-cyan transition-colors text-label-caps font-label-caps" href="#">Status</a>
+<a class="text-terminal-gray hover:text-neon-cyan transition-colors text-label-caps font-label-caps" href="#">Legal</a>
+</div>
+</footer>
+</main>
+<!-- Right Side Utility/Preview -->
+<aside class="hidden xl:flex flex-col border-l border-white/5 p-8 gap-8 sticky top-16 h-[calc(100vh-64px)]">
+<div class="glass-card p-6 rounded-xl">
+<h5 class="text-label-caps font-label-caps text-primary mb-4">Related Skillsets</h5>
+<div class="space-y-4">
+<div class="group cursor-pointer">
+<div class="text-neon-cyan text-[10px] font-bold mb-1">01.2</div>
+<div class="text-on-surface group-hover:text-neon-cyan transition-colors">Neural Sync Patterns</div>
+</div>
+<div class="group cursor-pointer">
+<div class="text-neon-violet text-[10px] font-bold mb-1">01.4</div>
+<div class="text-on-surface group-hover:text-neon-violet transition-colors">Recursive Debugging</div>
+</div>
+</div>
+</div>
+<div class="mt-auto glass-card p-6 rounded-xl overflow-hidden relative group">
+<div class="relative z-10">
+<h5 class="text-label-caps font-label-caps text-primary mb-2">Live Activity</h5>
+<p class="text-[10px] text-terminal-gray mb-4">Users currently in Section 1.3</p>
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-background-deep bg-surface-container-high flex items-center justify-center text-[10px] text-neon-cyan">JD</div>
+<div class="w-8 h-8 rounded-full border-2 border-background-deep bg-surface-container-high flex items-center justify-center text-[10px] text-neon-violet">AK</div>
+<div class="w-8 h-8 rounded-full border-2 border-background-deep bg-surface-container-high flex items-center justify-center text-[10px] text-primary">+14</div>
+</div>
+</div>
+<div class="absolute inset-0 bg-neon-cyan/5 group-hover:bg-neon-cyan/10 transition-colors"></div>
+</div>
+</aside>
+</div>
+<!-- Floating Action Button (FAB) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-neon-cyan text-black rounded-full shadow-[0_0_20px_rgba(35,247,221,0.4)] flex items-center justify-center hover:scale-110 transition-transform z-50">
+<span class="material-symbols-outlined">chat_bubble</span>
+</button>
+<script>
+        // Micro-interaction for code block copy
+        document.querySelectorAll('.material-symbols-outlined').forEach(icon => {
+            if (icon.innerText === 'content_copy') {
+                icon.addEventListener('click', () => {
+                    icon.innerText = 'check';
+                    icon.classList.add('text-neon-cyan');
+                    setTimeout(() => {
+                        icon.innerText = 'content_copy';
+                        icon.classList.remove('text-neon-cyan');
+                    }, 2000);
+                });
+            }
+        });
+
+        // Atmospheric parallax on scroll for decorative images
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroImage = document.querySelector('img[data-alt*="MultiversX"]');
+            if (heroImage) {
+                heroImage.style.transform = `translateY(${scrolled * 0.15}px)`;
+            }
+        });
+    </script>
+</body></html>

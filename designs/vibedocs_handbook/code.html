@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VibeDocs AI - Vibe Coding Handbook</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #000000;
+            color: #dbe4e1;
+            font-family: 'Hanken Grotesk', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .neon-border-glow:hover {
+            border-color: rgba(35, 247, 221, 0.4);
+            box-shadow: 0 0 20px rgba(35, 247, 221, 0.1);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #232c2a;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #23F7DD;
+        }
+        .prose code {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            color: #23F7DD;
+        }
+        .prose pre {
+            background: #08100e !important;
+            border: 1px solid #3a4a46;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            position: relative;
+        }
+        .pulse-dot {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.7; }
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#ffda53",
+                    "surface-container-highest": "#2e3634",
+                    "outline": "#849490",
+                    "primary-fixed": "#31fde3",
+                    "on-primary-fixed-variant": "#005047",
+                    "neon-cyan": "#23F7DD",
+                    "secondary-container": "#571bc1",
+                    "on-surface": "#dbe4e1",
+                    "primary-container": "#23f7dd",
+                    "background": "#0d1513",
+                    "tertiary-fixed-dim": "#e7c43e",
+                    "error": "#ffb4ab",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "on-error-container": "#ffdad6",
+                    "surface-bright": "#323b39",
+                    "secondary": "#d0bcff",
+                    "on-surface-variant": "#b9cac5",
+                    "neon-violet": "#A855F7",
+                    "surface-variant": "#2e3634",
+                    "inverse-surface": "#dbe4e1",
+                    "on-background": "#dbe4e1",
+                    "surface-container-high": "#232c2a",
+                    "on-tertiary-container": "#745f00",
+                    "inverse-on-surface": "#2a3230",
+                    "on-primary-fixed": "#00201c",
+                    "background-deep": "#000000",
+                    "on-primary": "#003730",
+                    "primary": "#e5fff8",
+                    "on-secondary-container": "#c4abff",
+                    "error-container": "#93000a",
+                    "inverse-primary": "#006b5e",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "surface-dim": "#0d1513",
+                    "surface-container-lowest": "#08100e",
+                    "surface-container-low": "#151d1b",
+                    "on-tertiary-fixed-variant": "#554500",
+                    "surface-container": "#19211f",
+                    "terminal-gray": "#A3A3A3",
+                    "surface": "#0d1513",
+                    "on-secondary-fixed": "#23005c",
+                    "tertiary": "#fff8ef",
+                    "surface-tint": "#00dfc7",
+                    "on-secondary": "#3c0091",
+                    "error-red": "#FF4D4D",
+                    "primary-fixed-dim": "#00dfc7",
+                    "secondary-fixed": "#e9ddff",
+                    "outline-variant": "#3a4a46",
+                    "on-tertiary-fixed": "#231b00",
+                    "on-error": "#690005",
+                    "on-primary-container": "#006d61",
+                    "on-tertiary": "#3b2f00",
+                    "tertiary-fixed": "#ffe17a",
+                    "surface-glass": "rgba(255, 255, 255, 0.03)"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "unit": "8px",
+                    "margin-desktop": "64px",
+                    "margin-mobile": "16px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Hanken Grotesk"],
+                    "label-caps": ["JetBrains Mono"],
+                    "body-md": ["Hanken Grotesk"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "code-md": ["JetBrains Mono"],
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "headline-sm": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "code-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+        },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background-deep min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="bg-surface-glass backdrop-blur-xl border-b border-white/10 dock full-width top-0 sticky z-50 flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-8">
+<a class="text-headline-sm font-headline-sm font-bold text-primary tracking-tighter flex items-center gap-2" href="#">
+<span class="text-neon-cyan material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">terminal</span>
+                VibeDocs AI
+            </a>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-neon-cyan font-bold border-b-2 border-neon-cyan pb-1 text-label-caps font-label-caps" href="#">Docs</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors text-label-caps font-label-caps" href="#">Skill Guides</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors text-label-caps font-label-caps" href="#">Roadmap</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors text-label-caps font-label-caps" href="#">Changelog</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex bg-surface-container border border-outline-variant/30 rounded-lg px-3 py-1.5 items-center gap-2 w-64">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">search</span>
+<span class="text-terminal-gray text-body-md font-body-md flex-1">Quick search...</span>
+<span class="text-label-caps font-label-caps text-[10px] bg-surface-container-highest px-1.5 py-0.5 rounded border border-white/5 opacity-50">⌘K</span>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-neon-cyan transition-colors">dark_mode</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-neon-cyan transition-colors">account_circle</button>
+</div>
+</header>
+<div class="flex-1 flex w-full max-w-container-max mx-auto relative">
+<!-- Sidebar Navigation (Left) -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 hidden lg:flex flex-col bg-surface-container-lowest/80 backdrop-blur-2xl border-r border-white/5 py-8 gap-4 px-6 overflow-y-auto custom-scrollbar">
+<div class="mb-6">
+<div class="flex items-center gap-3 mb-1">
+<img alt="Vibe OS Logo" class="w-8 h-8 rounded-lg border border-neon-cyan/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL95-huu8ISnA_Q6rJUic_cRF7RnJP6CI1cAOHKDkYV-J5MqqYhZCugBiQLVFpVyEQcEJS_dVkTJYS1KFYZQkvgdgj6ezqkwlCLgPpYCaI24O56mmc5UoT4WqhNrGkWfrRbD2nawcj2ToWb6mnt4XbSGJqQ5vOx7j49_rQ1WJwbLWf_KUWv7MxIk3DU96FXSrG648T7XmSEtwjQPPZm3x1HLIekEJFNNsvp1E0s5E_OCxah7Asf1KZ364pkvqi28ngXhy7b495z0E"/>
+<div>
+<h3 class="text-label-caps font-label-caps text-primary leading-tight">System Core</h3>
+<p class="text-[10px] text-neon-cyan/60 font-label-caps">v2.0.4-alpha</p>
+</div>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary-container/10 text-neon-cyan border-r-2 border-neon-cyan translate-x-1 transition-transform group" href="#">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+<span class="text-label-caps font-label-caps">Introduction</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-terminal-gray hover:text-on-surface hover:bg-surface-glass transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+<span class="text-label-caps font-label-caps">Core Concepts</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-terminal-gray hover:text-on-surface hover:bg-surface-glass transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+<span class="text-label-caps font-label-caps">Vibe Coding</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-terminal-gray hover:text-on-surface hover:bg-surface-glass transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+<span class="text-label-caps font-label-caps">AI Agents</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-terminal-gray hover:text-on-surface hover:bg-surface-glass transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px]">folder_open</span>
+<span class="text-label-caps font-label-caps">Resource Hub</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-terminal-gray hover:text-on-surface hover:bg-surface-glass transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px]">shield</span>
+<span class="text-label-caps font-label-caps">Security</span>
+</a>
+</nav>
+<div class="mt-8 pt-8 border-t border-white/5">
+<button class="w-full bg-neon-cyan text-background-deep font-bold py-2 rounded-lg text-label-caps font-label-caps hover:scale-95 transition-transform duration-200">
+                    Join Community
+                </button>
+</div>
+<div class="mt-auto flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-1.5 text-terminal-gray hover:text-neon-cyan text-label-caps font-label-caps" href="#">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+                    Settings
+                </a>
+<a class="flex items-center gap-3 px-3 py-1.5 text-terminal-gray hover:text-neon-cyan text-label-caps font-label-caps" href="#">
+<span class="material-symbols-outlined text-[18px]">help_outline</span>
+                    Support
+                </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 lg:ml-64 lg:mr-72 p-margin-desktop min-w-0">
+<!-- Header section with holographic vibes -->
+<div class="relative mb-12">
+<div class="absolute -top-12 -left-12 w-64 h-64 bg-neon-violet/10 rounded-full blur-[100px] pointer-events-none"></div>
+<h1 class="text-display-lg font-display-lg text-primary mb-4">Vibe Coding Handbook</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl">
+                    Master the art of agentic engineering. This handbook defines the standard for fluid, visual development in the age of large language models.
+                </p>
+<div class="flex gap-4 mt-8">
+<div class="glass-panel px-4 py-2 rounded-full flex items-center gap-2 border border-neon-cyan/20">
+<span class="w-2 h-2 rounded-full bg-neon-cyan pulse-dot"></span>
+<span class="text-label-caps font-label-caps text-neon-cyan text-[10px]">AI STATUS: READY</span>
+</div>
+<div class="glass-panel px-4 py-2 rounded-full flex items-center gap-2 border border-white/10">
+<span class="text-label-caps font-label-caps text-terminal-gray text-[10px]">READ TIME: 12 MIN</span>
+</div>
+</div>
+</div>
+<!-- Documentation Content -->
+<article class="prose prose-invert max-w-none space-y-12">
+<!-- Section 1: Intro -->
+<section id="introduction">
+<h2 class="text-headline-md font-headline-md text-primary mb-6 flex items-center gap-3">
+<span class="text-neon-cyan">01.</span> The Philosophy
+                    </h2>
+<p class="text-body-md font-body-md text-on-surface-variant leading-relaxed mb-8">
+                        Vibe Coding is a paradigm shift where the developer focuses on intent, architecture, and high-level patterns while delegating the granular implementation to autonomous agents. It's about maintaining a "flow state" by using sensory-rich interfaces that provide immediate feedback.
+                    </p>
+<!-- Bento Grid for Core Concepts -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+<div class="glass-panel p-6 rounded-xl neon-border-glow transition-all">
+<span class="material-symbols-outlined text-neon-violet mb-4">visibility</span>
+<h4 class="text-headline-sm font-headline-sm text-primary mb-2">Visual Precision</h4>
+<p class="text-body-md font-body-md text-terminal-gray">Debug by sight. Use real-time visualizers to observe agent behavior and system health in a 3D coordinate space.</p>
+</div>
+<div class="glass-panel p-6 rounded-xl neon-border-glow transition-all">
+<span class="material-symbols-outlined text-neon-cyan mb-4">auto_fix_high</span>
+<h4 class="text-headline-sm font-headline-sm text-primary mb-2">Agentic Intent</h4>
+<p class="text-body-md font-body-md text-terminal-gray">Code via context. High-level directives are translated into tactical actions by your local AI swarm.</p>
+</div>
+</div>
+</section>
+<!-- Section 2: Code Implementation -->
+<section id="implementation">
+<h2 class="text-headline-md font-headline-md text-primary mb-6 flex items-center gap-3">
+<span class="text-neon-cyan">02.</span> Implementation
+                    </h2>
+<p class="text-body-md font-body-md text-on-surface-variant leading-relaxed mb-6">
+                        Integrating Vibe Protocol into your stack requires a specialized configuration. Below is a standard agent initialization script using our proprietary <code class="text-neon-cyan">vibe-kit</code>.
+                    </p>
+<div class="relative group">
+<div class="absolute top-4 right-4 flex gap-2">
+<button class="bg-surface-container-highest/50 backdrop-blur p-2 rounded-lg border border-white/10 hover:border-neon-cyan/50 transition-colors material-symbols-outlined text-sm">content_copy</button>
+</div>
+<div class="bg-background-deep border border-outline-variant/30 rounded-xl overflow-hidden font-code-md text-code-md">
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container border-b border-white/5">
+<span class="w-3 h-3 rounded-full bg-red-500/30"></span>
+<span class="w-3 h-3 rounded-full bg-yellow-500/30"></span>
+<span class="w-3 h-3 rounded-full bg-green-500/30"></span>
+<span class="ml-4 text-terminal-gray text-[10px] font-label-caps">agent_init.js</span>
+</div>
+<pre class="p-6 text-on-surface-variant leading-relaxed"><code><span class="text-neon-violet">import</span> { AgentSwarm } <span class="text-neon-violet">from</span> <span class="text-neon-cyan">'@vibecos/core'</span>;
+
+<span class="text-terminal-gray">// Initialize a high-vibe agent instance</span>
+<span class="text-neon-violet">const</span> nexus = <span class="text-neon-violet">new</span> <span class="text-neon-cyan">AgentSwarm</span>({
+    mode: <span class="text-neon-cyan">'ultra-fluid'</span>,
+    intent_depth: <span class="text-neon-violet">0.95</span>,
+    visualize: <span class="text-neon-violet">true</span>
+});
+
+nexus.<span class="text-neon-cyan">on</span>(<span class="text-neon-cyan">'thought'</span>, (vibe) =&gt; {
+    <span class="text-terminal-gray">// Render holographic trace</span>
+    NexusVis.<span class="text-neon-cyan">push</span>(vibe.geometric_representation);
+});
+
+nexus.<span class="text-neon-cyan">deploy</span>();</code></pre>
+</div>
+</div>
+</section>
+<!-- Section 3: Visualization -->
+<section id="visualization">
+<h2 class="text-headline-md font-headline-md text-primary mb-6 flex items-center gap-3">
+<span class="text-neon-cyan">03.</span> Holographic Maps
+                    </h2>
+<div class="w-full aspect-video rounded-2xl overflow-hidden border border-white/10 relative group mb-8">
+<div class="absolute inset-0 bg-gradient-to-tr from-background-deep via-transparent to-neon-violet/10 z-10"></div>
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A hyper-detailed 3D visualization of a neural network architecture glowing in vibrant neon cyan and violet colors against a deep space black background. The structure features floating glass-like nodes and intricate light-trails representing data flow. The aesthetic is futuristic and high-performance, resembling a holographic tactical HUD with soft bokeh effects and deep shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAC39WUv3bCXpFsOIr0YLXmApQP3M9olAswuNg7HBR_ZgCvuWTddiXIkpUAdPj5wGjQ5NdzCCOpAOJW27ggtSpQPK46rMefeZz7eTg6HFKfMolwg-MF_U2mAY87jQIc0967CpDjC8RNdRaJnp8t8s_52OQcypu_v20f9X33drHZr36V4mreWreAFTbwfYl46oBx22YkRE8a0Fl0-DsfIGULUq5Y47I0vd7YfvpzidrvkrYfhpZe05F8LE8CkxTfQpmfMO3OhELVHek"/>
+<div class="absolute bottom-6 left-6 z-20">
+<div class="bg-background-deep/80 backdrop-blur-md px-6 py-4 rounded-xl border border-neon-cyan/30">
+<h5 class="text-label-caps font-label-caps text-neon-cyan mb-1">Architecture Trace</h5>
+<p class="text-body-md text-on-surface">Vibe Coding Node Map v2.0</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: AI Agent Chips -->
+<section class="mb-12" id="agents">
+<h2 class="text-headline-md font-headline-md text-primary mb-6">Active Agents</h2>
+<div class="flex flex-wrap gap-3">
+<div class="flex items-center gap-2 bg-surface-container-high px-4 py-2 rounded-full border border-white/10">
+<span class="w-2 h-2 rounded-full bg-neon-cyan pulse-dot"></span>
+<span class="text-label-caps font-label-caps text-on-surface text-[11px]">ARCHITECT-01</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-high px-4 py-2 rounded-full border border-white/10 opacity-60">
+<span class="w-2 h-2 rounded-full bg-terminal-gray"></span>
+<span class="text-label-caps font-label-caps text-on-surface text-[11px]">DEBUGGER-X</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-high px-4 py-2 rounded-full border border-neon-violet/30 shadow-[0_0_10px_rgba(168,85,247,0.1)]">
+<span class="w-2 h-2 rounded-full bg-neon-violet pulse-dot"></span>
+<span class="text-label-caps font-label-caps text-on-surface text-[11px]">REFACTOR_BOT</span>
+</div>
+</div>
+</section>
+</article>
+<!-- Footer -->
+<footer class="mt-20 pt-12 border-t border-outline-variant/30 grid grid-cols-1 md:grid-cols-4 gap-gutter w-full">
+<div class="md:col-span-2">
+<span class="text-headline-sm font-headline-sm text-primary mb-4 block">VibeDocs AI</span>
+<p class="text-body-md font-body-md text-terminal-gray max-w-sm">© 2024 Vibe Coding Protocol. Engineered for the Internet-Scale Era.</p>
+</div>
+<div class="flex flex-col gap-2">
+<span class="text-label-caps font-label-caps text-primary mb-2">Social</span>
+<a class="text-terminal-gray hover:text-neon-cyan transition-colors text-body-md" href="#">X.com</a>
+<a class="text-terminal-gray hover:text-neon-cyan transition-colors text-body-md" href="#">GitHub</a>
+<a class="text-terminal-gray hover:text-neon-cyan transition-colors text-body-md" href="#">Discord</a>
+</div>
+<div class="flex flex-col gap-2">
+<span class="text-label-caps font-label-caps text-primary mb-2">Legal</span>
+<a class="text-terminal-gray hover:text-neon-cyan transition-colors text-body-md" href="#">Status</a>
+<a class="text-terminal-gray hover:text-neon-cyan transition-colors text-body-md" href="#">Privacy</a>
+<a class="text-terminal-gray hover:text-neon-cyan transition-colors text-body-md" href="#">Terms</a>
+</div>
+</footer>
+</main>
+<!-- Right Sidebar (On this page) -->
+<aside class="fixed right-0 top-16 h-[calc(100vh-64px)] w-72 hidden xl:flex flex-col border-l border-white/5 py-12 px-8 overflow-y-auto custom-scrollbar">
+<h4 class="text-label-caps font-label-caps text-primary mb-6">On this page</h4>
+<nav class="flex flex-col gap-4">
+<a class="text-body-md text-neon-cyan border-l-2 border-neon-cyan pl-4 font-medium" href="#introduction">01. The Philosophy</a>
+<a class="text-body-md text-terminal-gray hover:text-on-surface border-l-2 border-transparent pl-4 transition-colors" href="#implementation">02. Implementation</a>
+<a class="text-body-md text-terminal-gray hover:text-on-surface border-l-2 border-transparent pl-4 transition-colors" href="#visualization">03. Holographic Maps</a>
+<a class="text-body-md text-terminal-gray hover:text-on-surface border-l-2 border-transparent pl-4 transition-colors" href="#agents">04. Active Agents</a>
+</nav>
+<div class="mt-12 glass-panel p-4 rounded-xl border-neon-violet/20 bg-gradient-to-br from-neon-violet/5 to-transparent">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-neon-violet text-[20px]">lightbulb</span>
+<span class="text-label-caps font-label-caps text-on-surface text-[10px]">PRO TIP</span>
+</div>
+<p class="text-[13px] text-terminal-gray leading-relaxed">
+                    Toggle <kbd class="bg-surface-container-highest px-1 rounded text-primary border border-white/10">v</kbd> on any element to enter "Vibe Inspection" mode.
+                </p>
+</div>
+</aside>
+</div>
+<!-- Mobile Bottom Nav -->
+<div class="lg:hidden fixed bottom-0 left-0 w-full bg-surface-container-low border-t border-white/5 h-16 flex items-center justify-around z-50 backdrop-blur-xl">
+<button class="flex flex-col items-center gap-1 text-neon-cyan">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="text-[10px] font-label-caps">Docs</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-terminal-gray">
+<span class="material-symbols-outlined">search</span>
+<span class="text-[10px] font-label-caps">Search</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-terminal-gray">
+<span class="material-symbols-outlined">list</span>
+<span class="text-[10px] font-label-caps">Outline</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-terminal-gray">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-[10px] font-label-caps">Profile</span>
+</button>
+</div>
+<script>
+        // Simple scroll spy behavior
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('aside[class*="xl:flex"] nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-neon-cyan', 'border-neon-cyan', 'font-medium');
+                link.classList.add('text-terminal-gray', 'border-transparent');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('text-neon-cyan', 'border-neon-cyan', 'font-medium');
+                    link.classList.remove('text-terminal-gray', 'border-transparent');
+                }
+            });
+        });
+
+        // Interactive HUD elements
+        document.addEventListener('mousemove', (e) => {
+            const panels = document.querySelectorAll('.neon-border-glow');
+            panels.forEach(panel => {
+                const rect = panel.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                if (x > 0 && x < rect.width && y > 0 && y < rect.height) {
+                    panel.style.boxShadow = `0 0 40px rgba(35, 247, 221, ${0.05 + Math.random() * 0.05})`;
+                }
+            });
+        });
+    </script>
+</body></html>

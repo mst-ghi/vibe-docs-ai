@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VibeDocs AI | The Internet-Scale Documentation Protocol</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#005049",
+                        "on-error": "#690005",
+                        "inverse-surface": "#dae2fd",
+                        "surface-container-high": "#222a3d",
+                        "surface-container-highest": "#2d3449",
+                        "background": "#0b1326",
+                        "surface-dim": "#0b1326",
+                        "surface": "#0b1326",
+                        "surface-container-lowest": "#060e20",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "tertiary-fixed-dim": "#6bd8cb",
+                        "secondary-fixed": "#e9ddff",
+                        "on-tertiary-container": "#00302b",
+                        "outline": "#908fa0",
+                        "on-surface": "#dae2fd",
+                        "surface-container": "#171f33",
+                        "primary": "#c0c1ff",
+                        "surface-bright": "#31394d",
+                        "tertiary-container": "#29a195",
+                        "surface-variant": "#2d3449",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "inverse-on-surface": "#283044",
+                        "tertiary-fixed": "#89f5e7",
+                        "surface-tint": "#c0c1ff",
+                        "secondary-container": "#571bc1",
+                        "on-surface-variant": "#c7c4d7",
+                        "on-tertiary-fixed": "#00201d",
+                        "primary-fixed": "#e1e0ff",
+                        "error": "#ffb4ab",
+                        "on-tertiary": "#003732",
+                        "primary-container": "#8083ff",
+                        "inverse-primary": "#494bd6",
+                        "on-background": "#dae2fd",
+                        "tertiary": "#6bd8cb",
+                        "surface-container-low": "#131b2e",
+                        "on-secondary-container": "#c4abff",
+                        "on-primary-container": "#0d0096",
+                        "error-container": "#93000a",
+                        "on-secondary": "#3c0091",
+                        "on-primary": "#1000a9",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "on-secondary-fixed": "#23005c",
+                        "outline-variant": "#464554",
+                        "on-primary-fixed": "#07006c",
+                        "secondary": "#d0bcff",
+                        "on-secondary-fixed-variant": "#5516be"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Geist"],
+                        "headline-lg-mobile": ["Geist"],
+                        "label-sm": ["JetBrains Mono"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg": ["Geist"],
+                        "body-md": ["Inter"],
+                        "display": ["Geist"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["20px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-lg": ["28px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "display": ["44px", {"lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #060e20;
+            color: #dae2fd;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: rgba(23, 31, 51, 0.4);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(144, 143, 160, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(192, 193, 255, 0.3);
+            background: rgba(23, 31, 51, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .subtle-glow {
+            filter: drop-shadow(0 0 12px rgba(128, 131, 255, 0.25));
+        }
+
+        .tertiary-glow {
+            filter: drop-shadow(0 0 12px rgba(107, 216, 203, 0.15));
+        }
+
+        .noise-bg {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .orb-animation {
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-12px) scale(1.02); }
+        }
+
+        .scanline {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to bottom, transparent, rgba(192, 193, 255, 0.02), transparent);
+            position: absolute;
+            top: -150px;
+            left: 0;
+            animation: scan 12s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { top: -150px; }
+            100% { top: 100%; }
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface bg-surface-container-lowest selection:bg-primary/30">
+<!-- TopNavBar -->
+<nav class="sticky top-0 z-50 backdrop-blur-xl border-b border-outline-variant/20 bg-surface/50">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto h-14">
+<div class="flex items-center gap-8">
+<a class="text-[20px] font-headline-md font-bold text-primary tracking-tighter" href="#">VibeDocs AI</a>
+<div class="hidden md:flex gap-6">
+<a class="text-primary font-semibold border-b-2 border-primary pb-0.5 font-label-md text-label-md" href="#">Docs</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md" href="#">Skill Guides</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md" href="#">Roadmap</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md" href="#">Changelog</a>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="hidden lg:flex items-center bg-surface-container-low border border-outline-variant/30 px-3 py-1 rounded-lg w-64 group focus-within:border-primary/50 transition-all">
+<span class="material-symbols-outlined text-outline text-[16px]">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-[12px] font-label-md text-on-surface-variant w-full placeholder:text-outline" placeholder="Command + K to search" type="text"/>
+</div>
+<button class="material-symbols-outlined p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-full transition-all text-[20px]">dark_mode</button>
+<button class="material-symbols-outlined p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-full transition-all text-[20px]">account_circle</button>
+</div>
+</div>
+</nav>
+<main class="relative">
+<div class="noise-bg absolute inset-0 pointer-events-none"></div>
+<div class="scanline pointer-events-none"></div>
+<!-- Hero Section -->
+<section class="relative min-h-[75vh] flex items-center pt-16 pb-12 px-margin-desktop overflow-hidden">
+<div class="max-w-container-max mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="z-10">
+<div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-secondary-container/20 border border-secondary/30 text-secondary-fixed-dim font-label-sm text-[11px] mb-6">
+<span class="material-symbols-outlined text-[12px]">auto_awesome</span>
+                    VIBE ENGINE v2.0.4 ACTIVE
+                </div>
+<h1 class="font-display text-display text-on-surface mb-4 leading-tight tracking-tighter">
+                    The Internet-Scale <br/>
+<span class="text-primary">Documentation</span> Protocol
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg mb-10 leading-snug">
+                    VibeDocs AI transforms complex "black box" systems into fluid, visual, and agentic documentation. Engineered for the era of high-performance Vibe Coding.
+                </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary-container text-on-primary-container px-6 py-3 rounded-lg font-bold font-label-md text-label-md flex items-center gap-2 hover:brightness-110 transition-all subtle-glow">
+                        Start building
+                        <span class="material-symbols-outlined text-sm">north_east</span>
+</button>
+<button class="border border-outline-variant text-on-surface px-6 py-3 rounded-lg font-bold font-label-md text-label-md hover:bg-surface-container-high transition-all">
+                        Foundry Sessions
+                    </button>
+</div>
+<div class="grid grid-cols-3 gap-10 mt-16 border-t border-outline-variant/20 pt-8">
+<div>
+<div class="text-tertiary text-[20px] font-bold tracking-tight">~0.002s</div>
+<div class="text-[10px] font-label-sm text-outline mt-0.5 uppercase tracking-wider">Latency</div>
+</div>
+<div>
+<div class="text-on-surface text-[20px] font-bold tracking-tight">3,697+</div>
+<div class="text-[10px] font-label-sm text-outline mt-0.5 uppercase tracking-wider">Nodes</div>
+</div>
+<div>
+<div class="text-secondary-fixed-dim text-[20px] font-bold tracking-tight">9.21M</div>
+<div class="text-[10px] font-label-sm text-outline mt-0.5 uppercase tracking-wider">Objects</div>
+</div>
+</div>
+</div>
+<div class="relative flex justify-center lg:justify-end">
+<div class="absolute -z-10 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+<img alt="Atmospheric visualization" class="w-full max-w-[520px] orb-animation relative z-10 opacity-90 brightness-90 grayscale-[20%]" src="https://lh3.googleusercontent.com/aida/AP1WRLuSBlI7AY3pMjyl3_YigP8v9n2xwDZaW8wacKEBmoLyiBdBrQi0mNdbTVdQVRWXStbyWT3QKFC7IjUUeALJyKcH6bKOBApdqbCBtn398IhMDqHadPBzlVcBw5wwGs2qTYXTRcHPwFciMZ3l-iNyf3BFIfTfQXiNmzVFS9PkHEzyGd7REtqCyCLepEwXhBxeUMhYu_Tnak4nq2xymCW33gSN2MHuyGGIvl_majlnRCduyoQ0AehyLutOb9w"/>
+</div>
+</div>
+</section>
+<!-- Core Principles Bento Grid -->
+<section class="py-20 px-margin-desktop bg-surface-container-lowest">
+<div class="max-w-container-max mx-auto">
+<div class="text-center mb-16">
+<span class="font-label-md text-[11px] text-tertiary mb-3 block uppercase tracking-[0.2em]">Core Protocols</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tighter leading-tight">Let's make documentation <br/> fluid for your team</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-gutter">
+<!-- Roles vs Skills -->
+<div class="glass-card md:col-span-2 lg:col-span-2 p-8 rounded-xl flex flex-col justify-between h-[300px]" style="background: rgba(23, 31, 51, 0.2); backdrop-filter: blur(24px); border: 1px solid rgba(144, 143, 160, 0.15);">
+<div>
+<div class="w-12 h-12 bg-tertiary-container/10 border border-tertiary-container/20 rounded-xl flex items-center justify-center text-tertiary mb-6">
+<span class="material-symbols-outlined text-[20px]">groups</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-3 tracking-tight leading-tight">Roles vs Skills</h3>
+<p class="text-on-surface-variant text-[14px] leading-relaxed">Dynamic role assignment based on granular skill sets. Eliminate documentation bottlenecks by routing queries to the most capable AI agent or human peer.</p>
+</div>
+<div class="flex items-center gap-2 text-tertiary font-label-md text-[12px] mt-4">
+                        EXPLORE SYSTEM
+                        <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</div>
+</div>
+<!-- Token Efficiency -->
+<div class="glass-card p-8 rounded-xl flex flex-col justify-between h-[300px]" style="background: rgba(23, 31, 51, 0.2); backdrop-filter: blur(24px); border: 1px solid rgba(144, 143, 160, 0.15);">
+<div>
+<div class="w-12 h-12 bg-secondary-container/10 border border-secondary-container/20 rounded-xl flex items-center justify-center text-secondary mb-6">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-3 tracking-tight leading-tight">Token Efficiency</h3>
+<p class="text-on-surface-variant text-[14px] leading-relaxed">Optimized RAG pipelines that minimize cost while maximizing context density.</p>
+</div>
+</div>
+<!-- Adaptive State Sharding -->
+<div class="glass-card p-8 rounded-xl flex flex-col justify-between h-[300px]" style="background: rgba(23, 31, 51, 0.2); backdrop-filter: blur(24px); border: 1px solid rgba(144, 143, 160, 0.15);">
+<div>
+<div class="w-12 h-12 bg-primary/10 border border-primary/20 rounded-xl flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined text-[20px]">layers</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-3 tracking-tight leading-tight">State Sharding</h3>
+<p class="text-on-surface-variant text-[14px] leading-relaxed">Horizontally scalable documentation architecture for massive datasets.</p>
+</div>
+</div>
+<!-- Agentic Reasoning -->
+<div class="glass-card p-8 rounded-xl flex flex-col justify-between h-[300px]" style="background: rgba(23, 31, 51, 0.2); backdrop-filter: blur(24px); border: 1px solid rgba(144, 143, 160, 0.15);">
+<div>
+<div class="w-12 h-12 bg-secondary-container/10 border border-secondary-container/20 rounded-xl flex items-center justify-center text-secondary mb-6">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-3 tracking-tight leading-tight">AI Agents</h3>
+<p class="text-on-surface-variant text-[14px] leading-relaxed">Documentation that thinks for itself. Automated maintenance and self-healing links.</p>
+</div>
+</div>
+<!-- Vibe Coding Hub -->
+<div class="glass-card md:col-span-3 lg:col-span-3 p-8 rounded-xl relative overflow-hidden h-[300px] group" style="background: rgba(23, 31, 51, 0.2); backdrop-filter: blur(24px); border: 1px solid rgba(144, 143, 160, 0.15);">
+<div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent"></div>
+<div class="h-full w-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[200px] text-primary opacity-10">code</span>
+</div>
+</div>
+<div class="relative z-10 flex flex-col justify-between h-full">
+<div>
+<div class="inline-block px-2 py-0.5 rounded bg-primary/10 text-primary-fixed-dim font-label-sm text-[10px] mb-4 border border-primary/20">EXPERIMENTAL</div>
+<h3 class="font-display text-[28px] text-on-surface mb-3 tracking-tighter leading-tight">Sovereign Vibe Coding Protocol</h3>
+<p class="text-on-surface-variant text-[15px] max-w-xl leading-relaxed">A unified interface for high-impact visual programming. Build at the speed of thought with integrated AI orchestration and real-time visualization.</p>
+</div>
+<button class="self-start text-primary font-bold font-label-md text-[12px] border-b-2 border-primary/20 hover:border-primary transition-all pb-0.5 mt-4">
+                            JOIN PROTOCOL
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Ecosystem Section -->
+<section class="py-20 px-margin-desktop bg-surface-container-lowest border-t border-outline-variant/10">
+<div class="max-w-container-max mx-auto">
+<div class="flex flex-col lg:flex-row gap-10 lg:items-end justify-between mb-16">
+<div>
+<h2 class="font-display text-headline-lg text-on-surface mb-4 tracking-tighter leading-tight">Discover the <br/> ecosystem</h2>
+<p class="text-on-surface-variant max-w-md text-[14px] leading-relaxed">Explore projects and partners from all around the world who chose to build using VibeDocs AI technology.</p>
+</div>
+<button class="bg-surface-container-high text-on-surface px-6 py-3 rounded-lg border border-outline-variant/30 flex items-center gap-3 hover:bg-surface-bright transition-all font-label-md text-label-md">
+                    Explore Ecosystem
+                    <span class="material-symbols-outlined text-sm">terminal</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<div class="p-8 border-l border-outline-variant/10 hover:border-primary transition-colors group cursor-pointer bg-surface-container-low/10">
+<div class="text-5xl font-bold text-outline/10 group-hover:text-primary/20 transition-colors mb-4 font-display tracking-tighter">2,324</div>
+<h4 class="text-on-surface text-[18px] font-semibold mb-2 tracking-tight">Projects</h4>
+<p class="text-on-surface-variant text-[12px] leading-relaxed">A new dimension of utility built and launched on VibeDocs.</p>
+</div>
+<div class="p-8 border-l border-outline-variant/10 hover:border-secondary transition-colors group cursor-pointer bg-surface-container-low/10">
+<div class="text-5xl font-bold text-outline/10 group-hover:text-secondary/20 transition-colors mb-4 font-display tracking-tighter">126</div>
+<h4 class="text-on-surface text-[18px] font-semibold mb-2 tracking-tight">Partners</h4>
+<p class="text-on-surface-variant text-[12px] leading-relaxed">Connected with leading platforms and protocols worldwide.</p>
+</div>
+<div class="p-8 border-l border-outline-variant/10 hover:border-tertiary transition-colors group cursor-pointer bg-surface-container-low/10">
+<div class="text-5xl font-bold text-outline/10 group-hover:text-tertiary/20 transition-colors mb-4 font-display tracking-tighter">3,521</div>
+<h4 class="text-on-surface text-[18px] font-semibold mb-2 tracking-tight">Validators</h4>
+<p class="text-on-surface-variant text-[12px] leading-relaxed">Securing the documentation network and earning rewards.</p>
+</div>
+<div class="p-8 border-l border-outline-variant/10 hover:border-primary transition-colors group cursor-pointer bg-surface-container-low/10">
+<div class="text-5xl font-bold text-outline/10 group-hover:text-primary/20 transition-colors mb-4 font-display tracking-tighter">14K</div>
+<h4 class="text-on-surface text-[18px] font-semibold mb-2 tracking-tight">Providers</h4>
+<p class="text-on-surface-variant text-[12px] leading-relaxed">Link your engineering intelligence with the VibeDocs network.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter / CTA -->
+<section class="py-20 px-margin-desktop">
+<div class="max-w-container-max mx-auto glass-card rounded-2xl p-12 lg:p-16 overflow-hidden relative border border-outline-variant/20" style="background: rgba(23, 31, 51, 0.2); backdrop-filter: blur(24px); border: 1px solid rgba(144, 143, 160, 0.15);">
+<div class="absolute -top-32 -right-32 w-[400px] h-[400px] bg-primary/5 blur-[120px] rounded-full"></div>
+<div class="relative z-10 flex flex-col items-center text-center max-w-2xl mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-6 tracking-tighter leading-tight">Stay in-the-know and never miss an update</h2>
+<form class="w-full flex flex-col sm:flex-row gap-3 mb-8">
+<input class="flex-grow bg-surface-container-lowest border border-outline-variant/30 text-on-surface rounded-lg px-5 py-3 text-[14px] focus:ring-2 focus:ring-primary/40 focus:border-primary outline-none transition-all font-label-md" placeholder="Enter a valid email address" type="email"/>
+<button class="bg-primary-container text-on-primary-container px-8 py-3 rounded-lg font-bold font-label-md text-label-md hover:brightness-110 transition-all subtle-glow shrink-0">
+                        Sign up
+                    </button>
+</form>
+<p class="text-on-surface-variant text-[11px] opacity-70 leading-relaxed max-w-lg">
+                    We’re committed to your privacy. VibeDocs uses the information you provide to us to contact you about VibeDocs content and events. You may unsubscribe from these communications at any time.
+                </p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant/10 py-16 px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-4 max-w-container-max mx-auto gap-10">
+<div class="flex flex-col gap-6">
+<div class="text-[20px] font-headline-md text-primary font-bold tracking-tighter">VibeDocs AI</div>
+<div class="flex gap-4">
+<a class="material-symbols-outlined text-outline hover:text-primary transition-colors text-[20px]" href="#">terminal</a>
+<a class="material-symbols-outlined text-outline hover:text-primary transition-colors text-[20px]" href="#">code</a>
+<a class="material-symbols-outlined text-outline hover:text-primary transition-colors text-[20px]" href="#">public</a>
+</div>
+<p class="text-[12px] font-body-md text-outline max-w-[200px] leading-relaxed">
+                © 2024 Vibe Coding Protocol. <br/> Engineered for the Internet-Scale Era.
+            </p>
+</div>
+<div class="flex flex-col gap-3">
+<span class="font-label-md text-[11px] text-on-surface font-bold uppercase tracking-wider mb-1">Protocol</span>
+<a class="text-outline hover:text-primary transition-colors text-[13px] font-body-md" href="#">Documentation</a>
+<a class="text-outline hover:text-primary transition-colors text-[13px] font-body-md" href="#">Whitepaper</a>
+<a class="text-outline hover:text-primary transition-colors text-[13px] font-body-md" href="#">Staking</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="font-label-md text-[11px] text-on-surface font-bold uppercase tracking-wider mb-1">Ecosystem</span>
+<a class="text-outline hover:text-primary transition-colors text-[13px] font-body-md" href="#">X.com</a>
+<a class="text-outline hover:text-primary transition-colors text-[13px] font-body-md" href="#">GitHub</a>
+<a class="text-outline hover:text-primary transition-colors text-[13px] font-body-md" href="#">Discord</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="font-label-md text-[11px] text-on-surface font-bold uppercase tracking-wider mb-1">Legal</span>
+<a class="text-outline hover:text-primary transition-colors text-[13px] font-body-md" href="#">Status</a>
+<a class="text-outline hover:text-primary transition-colors text-[13px] font-body-md" href="#">Privacy Policy</a>
+<a class="text-outline hover:text-primary transition-colors text-[13px] font-body-md" href="#">Terms of Use</a>
+</div>
+</div>
+</footer>
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if(target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 40) {
+            nav.classList.add('shadow-xl', 'bg-surface/95');
+            nav.classList.remove('h-14');
+            nav.classList.add('h-12');
+        } else {
+            nav.classList.remove('shadow-xl', 'bg-surface/95');
+            nav.classList.add('h-14');
+            nav.classList.remove('h-12');
+        }
+    });
+</script>
+</body></html>

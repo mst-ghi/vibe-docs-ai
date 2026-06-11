@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#908fa0",
+                        "on-surface-variant": "#c7c4d7",
+                        "on-tertiary": "#003732",
+                        "surface-variant": "#2d3449",
+                        "surface-container-highest": "#2d3449",
+                        "on-primary-container": "#0d0096",
+                        "on-surface": "#dae2fd",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "tertiary": "#6bd8cb",
+                        "surface-tint": "#c0c1ff",
+                        "on-tertiary-fixed-variant": "#005049",
+                        "on-secondary": "#3c0091",
+                        "surface-container-low": "#131b2e",
+                        "secondary-container": "#571bc1",
+                        "secondary": "#d0bcff",
+                        "on-primary": "#1000a9",
+                        "inverse-primary": "#494bd6",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "primary": "#c0c1ff",
+                        "tertiary-container": "#29a195",
+                        "on-secondary-container": "#c4abff",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "surface-container": "#171f33",
+                        "secondary-fixed": "#e9ddff",
+                        "surface-bright": "#31394d",
+                        "on-background": "#dae2fd",
+                        "inverse-on-surface": "#283044",
+                        "outline-variant": "#464554",
+                        "on-primary-fixed": "#07006c",
+                        "background": "#0b1326",
+                        "primary-container": "#8083ff",
+                        "on-tertiary-fixed": "#00201d",
+                        "on-tertiary-container": "#00302b",
+                        "surface": "#0b1326",
+                        "primary-fixed": "#e1e0ff",
+                        "error-container": "#93000a",
+                        "tertiary-fixed-dim": "#6bd8cb",
+                        "surface-container-lowest": "#060e20",
+                        "on-error": "#690005",
+                        "on-secondary-fixed": "#23005c",
+                        "surface-container-high": "#222a3d",
+                        "tertiary-fixed": "#89f5e7",
+                        "surface-dim": "#0b1326",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "inverse-surface": "#dae2fd",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "container-max": "1440px",
+                        "unit": "4px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "headline-lg-mobile": ["Geist"],
+                        "label-md": ["JetBrains Mono"],
+                        "label-sm": ["JetBrains Mono"],
+                        "display": ["Geist"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-surface {
+            background: rgba(23, 31, 51, 0.5);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-surface-hover:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(192, 193, 255, 0.3);
+        }
+        .jewel-glow-primary {
+            box-shadow: 0 0 20px -5px rgba(192, 193, 255, 0.4);
+        }
+        .jewel-glow-tertiary {
+            box-shadow: 0 0 20px -5px rgba(107, 216, 203, 0.4);
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0b1326; }
+        ::-webkit-scrollbar-thumb { background: #2d3449; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #464554; }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface-container-low/50 backdrop-blur-xl border-b border-white/10 shadow-2xl h-16">
+<div class="flex justify-between items-center px-margin-desktop h-full w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<span class="font-display text-headline-md text-primary tracking-tighter">VibeDocs AI</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-body-md text-body-md" href="#">Resources</a>
+<a class="text-on-surface-variant font-medium hover:text-tertiary transition-colors duration-300 font-body-md text-body-md" href="#">Documentation</a>
+<a class="text-on-surface-variant font-medium hover:text-tertiary transition-colors duration-300 font-body-md text-body-md" href="#">Showcase</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center bg-surface-container-highest/40 border border-white/5 rounded-full px-4 py-1.5 gap-2 w-64 group focus-within:border-primary/50 transition-all">
+<span class="material-symbols-outlined text-outline text-[18px]">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-label-md w-full placeholder:text-outline/60" placeholder="Search resources..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors p-2 scale-95 active:scale-90">settings</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors p-2 scale-95 active:scale-90">account_circle</button>
+<button class="ml-2 bg-primary text-on-primary font-bold px-5 py-2 rounded-full font-label-md scale-95 active:scale-90 transition-transform hover:bg-surface-tint">Get Started</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- SideNav (Documentation Context) -->
+<aside class="hidden md:flex fixed left-0 top-16 h-[calc(100vh-64px)] w-64 flex-col py-6 px-4 space-y-2 bg-surface-container-lowest/50 backdrop-blur-2xl border-r border-white/10 z-40">
+<div class="px-2 mb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface">Documentation</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant/70">v2.1.0-alpha</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-secondary-container/20 text-secondary border-r-2 border-secondary font-label-md transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">menu_book</span> Introduction
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant/70 hover:bg-white/5 hover:text-on-surface font-label-md transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">code</span> API Reference
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant/70 hover:bg-white/5 hover:text-on-surface font-label-md transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">terminal</span> SDKs
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant/70 hover:bg-white/5 hover:text-on-surface font-label-md transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">school</span> Guides
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant/70 hover:bg-white/5 hover:text-on-surface font-label-md transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">map</span> Roadmap
+            </a>
+</nav>
+<div class="pt-4 border-t border-white/5 space-y-1">
+<button class="w-full flex items-center justify-between px-3 py-2 bg-surface-container/40 rounded-lg border border-white/5 font-label-sm text-outline hover:text-on-surface transition-colors mb-4">
+<span>Command Palette</span>
+<span class="text-[10px] bg-white/10 px-1.5 py-0.5 rounded">⌘K</span>
+</button>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant/70 hover:text-tertiary font-label-sm" href="#">
+<span class="material-symbols-outlined text-[18px]">help</span> Support
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant/70 hover:text-tertiary font-label-sm" href="#">
+<span class="material-symbols-outlined text-[18px]">check_circle</span> Status
+            </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 pt-24 pb-12 px-margin-mobile md:px-margin-desktop min-h-screen relative overflow-hidden">
+<!-- Subtle Background Glow -->
+<div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 blur-[120px] rounded-full -z-10 pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-tertiary/5 blur-[100px] rounded-full -z-10 pointer-events-none"></div>
+<!-- Hero Section -->
+<section class="max-w-4xl mb-16">
+<span class="font-label-md text-label-md text-tertiary mb-4 block uppercase tracking-widest">Developer Hub</span>
+<h1 class="font-display text-display text-on-surface mb-6 leading-tight">Build at the speed <br/> of <span class="text-primary italic">thought</span>.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-2xl">
+                Explore our comprehensive suite of SDKs, high-performance API endpoints, and community-driven tools designed for the next generation of AI-native applications.
+            </p>
+<div class="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center">
+<div class="flex-1 glass-surface rounded-xl px-6 py-4 flex items-center gap-4 group focus-within:border-primary/50 transition-all">
+<span class="material-symbols-outlined text-primary">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-full placeholder:text-outline/40" placeholder="Find SDKs, methods, or tutorials..." type="text"/>
+<span class="text-label-sm text-outline/40 hidden sm:block">Press / to focus</span>
+</div>
+<button class="bg-primary-container text-on-primary-container font-bold px-8 py-4 rounded-xl font-label-md hover:scale-105 active:scale-95 transition-all jewel-glow-primary">
+                    Quick Start Guide
+                </button>
+</div>
+</section>
+<!-- Bento Grid: Integration Kits -->
+<div class="mb-8 flex items-center justify-between">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Integration Kits</h2>
+<a class="text-label-md text-primary hover:underline" href="#">View all 12 SDKs</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-gutter mb-20">
+<!-- Python SDK -->
+<div class="glass-surface glass-surface-hover rounded-xl p-6 transition-all duration-300 group cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6 jewel-glow-primary">
+<span class="material-symbols-outlined text-primary text-[28px]" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Python SDK</h3>
+<p class="text-on-surface-variant font-body-md mb-6 opacity-70 group-hover:opacity-100 transition-opacity">
+                    Robust async support for data-heavy AI workflows.
+                </p>
+<div class="flex items-center gap-3">
+<span class="font-label-sm bg-surface-variant/50 text-on-surface-variant px-2.5 py-1 rounded">v3.4.1</span>
+<span class="font-label-sm text-primary group-hover:translate-x-1 transition-transform">pip install vibedocs</span>
+</div>
+</div>
+<!-- JavaScript SDK -->
+<div class="glass-surface glass-surface-hover rounded-xl p-6 transition-all duration-300 group cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-tertiary/10 flex items-center justify-center mb-6 jewel-glow-tertiary">
+<span class="material-symbols-outlined text-tertiary text-[28px]" style="font-variation-settings: 'FILL' 1;">javascript</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Node.js SDK</h3>
+<p class="text-on-surface-variant font-body-md mb-6 opacity-70 group-hover:opacity-100 transition-opacity">
+                    Optimized for Edge functions and real-time streaming.
+                </p>
+<div class="flex items-center gap-3">
+<span class="font-label-sm bg-surface-variant/50 text-on-surface-variant px-2.5 py-1 rounded">v2.9.0</span>
+<span class="font-label-sm text-tertiary group-hover:translate-x-1 transition-transform">npm i @vibedocs/sdk</span>
+</div>
+</div>
+<!-- Rust SDK -->
+<div class="glass-surface glass-surface-hover rounded-xl p-6 transition-all duration-300 group cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-secondary text-[28px]" style="font-variation-settings: 'FILL' 1;">memory</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Rust Crate</h3>
+<p class="text-on-surface-variant font-body-md mb-6 opacity-70 group-hover:opacity-100 transition-opacity">
+                    Memory-safe, high-concurrency bindings for core logic.
+                </p>
+<div class="flex items-center gap-3">
+<span class="font-label-sm bg-surface-variant/50 text-on-surface-variant px-2.5 py-1 rounded">v0.12.3</span>
+<span class="font-label-sm text-secondary group-hover:translate-x-1 transition-transform">cargo add vibedocs</span>
+</div>
+</div>
+<!-- API Explorer (CTA Card) -->
+<div class="md:col-span-1 lg:col-span-1 glass-surface bg-gradient-to-br from-primary/20 to-transparent rounded-xl p-6 border-primary/20 flex flex-col justify-between group cursor-pointer">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">API Reference</h3>
+<p class="text-on-surface-variant font-body-md opacity-80">
+                        Interactive OpenAPI documentation with live testing sandbox.
+                    </p>
+</div>
+<button class="mt-8 flex items-center gap-2 font-label-md text-on-surface group-hover:text-primary transition-colors">
+                    Explore Endpoints <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Resources Feature Section -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter mb-20">
+<!-- Documentation Deep Dive -->
+<div class="glass-surface rounded-2xl p-10 flex flex-col justify-center relative overflow-hidden min-h-[400px]">
+<div class="relative z-10">
+<span class="font-label-sm text-tertiary mb-4 block uppercase tracking-widest">Learn</span>
+<h2 class="font-display text-headline-lg text-on-surface mb-6">Master the Protocol</h2>
+<p class="text-body-lg text-on-surface-variant mb-8 max-w-md">
+                        Our step-by-step guides walk you through everything from basic authentication to complex RAG architectures and custom model fine-tuning.
+                    </p>
+<div class="flex gap-4">
+<button class="px-6 py-3 bg-tertiary text-on-tertiary rounded-lg font-bold font-label-md hover:brightness-110 transition-all">Go to Guides</button>
+<button class="px-6 py-3 border border-outline-variant/40 rounded-lg font-bold font-label-md hover:bg-white/5 transition-all">Video Tutorials</button>
+</div>
+</div>
+<!-- Abstract Graphic Placeholder -->
+<div class="absolute -right-20 -bottom-20 w-80 h-80 opacity-20 group">
+<div class="w-full h-full bg-tertiary blur-[100px] rounded-full"></div>
+</div>
+</div>
+<!-- Community Tools -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="glass-surface glass-surface-hover rounded-xl p-8 flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-[40px] text-primary mb-4" data-weight="fill">hub</span>
+<h4 class="font-headline-md text-on-surface mb-2">Community Hub</h4>
+<p class="text-label-md text-on-surface-variant opacity-70 mb-6">Join 15,000+ developers on Discord</p>
+<button class="text-primary font-label-md border-b border-primary/30 pb-1 hover:border-primary transition-all">Join Discord</button>
+</div>
+<div class="glass-surface glass-surface-hover rounded-xl p-8 flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-[40px] text-secondary mb-4" data-weight="fill">shield_with_heart</span>
+<h4 class="font-headline-md text-on-surface mb-2">Security Portal</h4>
+<p class="text-label-md text-on-surface-variant opacity-70 mb-6">SOC2 Compliance &amp; Bug Bounty</p>
+<button class="text-secondary font-label-md border-b border-secondary/30 pb-1 hover:border-secondary transition-all">Report Vulnerability</button>
+</div>
+<div class="md:col-span-2 glass-surface glass-surface-hover rounded-xl p-8 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-outline-variant/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">terminal</span>
+</div>
+<div>
+<h4 class="font-label-md text-on-surface">CLI Toolbelt</h4>
+<p class="text-label-sm text-outline">v4.0 Release candidate available</p>
+</div>
+</div>
+<button class="px-4 py-2 bg-surface-container-highest rounded-lg font-label-sm text-on-surface hover:bg-surface-bright transition-all">Download Binaries</button>
+</div>
+</div>
+</div>
+<!-- Integration Showcase Section -->
+<section class="mb-20">
+<div class="text-center max-w-2xl mx-auto mb-12">
+<h2 class="font-display text-headline-lg text-on-surface mb-4">Trusted by Scale</h2>
+<p class="text-body-md text-on-surface-variant opacity-70">
+                    Powering critical infrastructure for the world's most innovative technology companies.
+                </p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-gutter opacity-40 hover:opacity-80 transition-opacity">
+<!-- Logic: Using generic labels/logos as requested not to use real company brands unless instructed -->
+<div class="glass-surface rounded-lg py-8 flex items-center justify-center grayscale hover:grayscale-0 transition-all cursor-default">
+<span class="font-display font-bold text-headline-md text-outline">ACME</span>
+</div>
+<div class="glass-surface rounded-lg py-8 flex items-center justify-center grayscale hover:grayscale-0 transition-all cursor-default">
+<span class="font-display font-bold text-headline-md text-outline">GLOBE</span>
+</div>
+<div class="glass-surface rounded-lg py-8 flex items-center justify-center grayscale hover:grayscale-0 transition-all cursor-default">
+<span class="font-display font-bold text-headline-md text-outline">CORE</span>
+</div>
+<div class="glass-surface rounded-lg py-8 flex items-center justify-center grayscale hover:grayscale-0 transition-all cursor-default">
+<span class="font-display font-bold text-headline-md text-outline">APEX</span>
+</div>
+<div class="glass-surface rounded-lg py-8 flex items-center justify-center grayscale hover:grayscale-0 transition-all cursor-default">
+<span class="font-display font-bold text-headline-md text-outline">VELO</span>
+</div>
+<div class="glass-surface rounded-lg py-8 flex items-center justify-center grayscale hover:grayscale-0 transition-all cursor-default">
+<span class="font-display font-bold text-headline-md text-outline">NEXA</span>
+</div>
+</div>
+</section>
+<!-- CTA Block -->
+<section class="glass-surface bg-primary/5 border-primary/10 rounded-3xl p-12 text-center relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-full opacity-10">
+<!-- Using the requested shader tag for atmosphere -->
+
+</div>
+<div class="relative z-10 max-w-xl mx-auto">
+<h2 class="font-display text-display text-on-surface mb-6">Ready to Ship?</h2>
+<p class="text-body-lg text-on-surface-variant mb-10">
+                    Get your production API keys in under 2 minutes and join the future of intelligent documentation.
+                </p>
+<div class="flex flex-wrap justify-center gap-4">
+<button class="bg-primary text-on-primary px-10 py-4 rounded-xl font-bold font-label-md hover:scale-105 active:scale-95 transition-all">Create Free Account</button>
+<button class="px-10 py-4 border border-outline rounded-xl font-bold font-label-md text-on-surface hover:bg-white/5 transition-all">Talk to Engineering</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 border-t border-outline-variant/20 bg-background md:ml-64 relative z-10">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop max-w-container-max mx-auto">
+<div class="col-span-1 md:col-span-1">
+<span class="font-headline-sm text-headline-sm text-outline mb-4 block">VibeDocs AI</span>
+<p class="text-label-sm text-on-surface-variant opacity-60">The next-gen intelligence layer for technical documentation.</p>
+</div>
+<div>
+<h4 class="text-label-md text-on-surface font-bold mb-4">Resources</h4>
+<ul class="space-y-2">
+<li><a class="text-label-sm text-on-surface-variant hover:text-tertiary underline transition-all opacity-80 hover:opacity-100" href="#">Changelog</a></li>
+<li><a class="text-label-sm text-on-surface-variant hover:text-tertiary underline transition-all opacity-80 hover:opacity-100" href="#">Community</a></li>
+<li><a class="text-label-sm text-on-surface-variant hover:text-tertiary underline transition-all opacity-80 hover:opacity-100" href="#">Showcase</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-label-md text-on-surface font-bold mb-4">Legal</h4>
+<ul class="space-y-2">
+<li><a class="text-label-sm text-on-surface-variant hover:text-tertiary underline transition-all opacity-80 hover:opacity-100" href="#">Security</a></li>
+<li><a class="text-label-sm text-on-surface-variant hover:text-tertiary underline transition-all opacity-80 hover:opacity-100" href="#">Privacy</a></li>
+<li><a class="text-label-sm text-on-surface-variant hover:text-tertiary underline transition-all opacity-80 hover:opacity-100" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-label-md text-on-surface font-bold mb-4">Stay Updated</h4>
+<div class="flex">
+<input class="bg-surface-container border border-outline-variant/30 rounded-l-lg px-3 py-2 text-label-sm w-full focus:ring-1 focus:ring-primary focus:outline-none" placeholder="Email address" type="email"/>
+<button class="bg-primary-container text-on-primary-container px-4 py-2 rounded-r-lg font-bold text-label-sm hover:brightness-110">Sub</button>
+</div>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-white/5 text-center">
+<p class="text-label-sm text-on-surface-variant opacity-50">© 2024 VibeDocs AI Protocol. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        // Micro-interactions and Search Shortcut
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+                e.preventDefault();
+                document.querySelector('input[type="text"]').focus();
+            }
+        });
+
+        // Add subtle parallax to glass cards on hover
+        const cards = document.querySelectorAll('.glass-surface-hover');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+            });
+        });
+    </script>
+</body></html>

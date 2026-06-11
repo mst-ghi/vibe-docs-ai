@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Support | VibeDocs AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#908fa0",
+                    "surface-container-high": "#222a3d",
+                    "primary-fixed": "#e1e0ff",
+                    "surface-tint": "#c0c1ff",
+                    "on-secondary-fixed": "#23005c",
+                    "on-primary-fixed-variant": "#2f2ebe",
+                    "tertiary-container": "#29a195",
+                    "on-secondary": "#3c0091",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "on-surface": "#dae2fd",
+                    "primary": "#c0c1ff",
+                    "secondary-container": "#571bc1",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-container": "#0d0096",
+                    "on-surface-variant": "#c7c4d7",
+                    "on-secondary-container": "#c4abff",
+                    "primary-container": "#8083ff",
+                    "on-error": "#690005",
+                    "background": "#0b1326",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "tertiary": "#6bd8cb",
+                    "surface-container-lowest": "#060e20",
+                    "surface-container-highest": "#2d3449",
+                    "inverse-surface": "#dae2fd",
+                    "on-tertiary-fixed": "#00201d",
+                    "on-background": "#dae2fd",
+                    "surface-bright": "#31394d",
+                    "inverse-primary": "#494bd6",
+                    "surface-container": "#171f33",
+                    "surface-dim": "#0b1326",
+                    "primary-fixed-dim": "#c0c1ff",
+                    "surface": "#0b1326",
+                    "tertiary-fixed": "#89f5e7",
+                    "outline-variant": "#464554",
+                    "error": "#ffb4ab",
+                    "tertiary-fixed-dim": "#6bd8cb",
+                    "on-tertiary-fixed-variant": "#005049",
+                    "error-container": "#93000a",
+                    "on-tertiary-container": "#00302b",
+                    "on-tertiary": "#003732",
+                    "on-primary-fixed": "#07006c",
+                    "surface-variant": "#2d3449",
+                    "secondary": "#d0bcff",
+                    "inverse-on-surface": "#283044",
+                    "secondary-fixed": "#e9ddff",
+                    "surface-container-low": "#131b2e",
+                    "on-primary": "#1000a9",
+                    "neon-cyan": "#6bd8cb",
+                    "neon-violet": "#d0bcff",
+                    "terminal-gray": "#908fa0",
+                    "surface-glass": "rgba(11, 19, 38, 0.8)"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1440px",
+                    "margin-mobile": "16px",
+                    "unit": "4px",
+                    "margin-desktop": "40px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Geist"],
+                    "label-sm": ["JetBrains Mono"],
+                    "label-md": ["JetBrains Mono"],
+                    "display": ["Geist"],
+                    "headline-lg-mobile": ["Geist"],
+                    "headline-lg": ["Geist"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-caps": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-caps": ["11px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-panel {
+            background: rgba(23, 31, 51, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .glass-card:active {
+            transform: scale(0.98);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion-active .accordion-content {
+            max-height: 500px;
+        }
+        .accordion-active .chevron-icon {
+            transform: rotate(180deg);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen">
+<!-- TopNavBar (Mobile View) -->
+<header class="bg-surface-glass backdrop-blur-xl border-b border-white/10 docked full-width top-0 sticky z-50 h-16 flex justify-between items-center w-full px-margin-mobile">
+<div class="text-headline-sm font-headline-sm font-bold text-primary tracking-tighter">VibeDocs AI</div>
+<div class="flex gap-4 items-center">
+<span class="material-symbols-outlined text-on-surface-variant">dark_mode</span>
+<span class="material-symbols-outlined text-on-surface-variant">account_circle</span>
+</div>
+</header>
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="relative px-margin-mobile pt-12 pb-8 overflow-hidden">
+
+<div class="relative z-10 space-y-6">
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface tracking-tight">How can we vibe today?</h1>
+<!-- AI Support Chat Bar -->
+<div class="glass-panel rounded-xl p-1 flex items-center shadow-2xl">
+<div class="flex-grow flex items-center px-3">
+<span class="material-symbols-outlined text-neon-cyan mr-3" style="font-size: 20px;">psychology</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-full placeholder:text-outline-variant" placeholder="Ask AI assistant..." type="text"/>
+</div>
+<button class="bg-primary-container text-on-primary-container p-2 rounded-lg flex items-center justify-center transition-all active:scale-95">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+<div class="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
+<span class="px-3 py-1 glass-card rounded-full text-label-sm whitespace-nowrap text-tertiary">Quick start</span>
+<span class="px-3 py-1 glass-card rounded-full text-label-sm whitespace-nowrap text-outline">API Keys</span>
+<span class="px-3 py-1 glass-card rounded-full text-label-sm whitespace-nowrap text-outline">Billing</span>
+<span class="px-3 py-1 glass-card rounded-full text-label-sm whitespace-nowrap text-outline">Vibe Logic</span>
+</div>
+</div>
+</section>
+<!-- FAQ Categories -->
+<section class="px-margin-mobile space-y-6 mb-12">
+<div class="space-y-4">
+<h2 class="text-label-caps font-label-caps text-on-surface-variant">Environment Setup</h2>
+<div class="space-y-3">
+<!-- Accordion Item 1 -->
+<div class="glass-card rounded-xl overflow-hidden accordion-item" onclick="toggleAccordion(this)">
+<div class="flex justify-between items-center p-4">
+<span class="text-body-md font-medium">Configuring Local Agents</span>
+<span class="material-symbols-outlined chevron-icon transition-transform">expand_more</span>
+</div>
+<div class="accordion-content bg-surface-container-low/50">
+<div class="p-4 text-body-md text-on-surface-variant leading-relaxed">
+                                To initialize your local agent environment, run <code class="font-label-md text-neon-cyan">vibe init</code> in your root directory. Ensure you have Node.js 18+ and a valid API key configured in your .env file.
+                            </div>
+</div>
+</div>
+<!-- Accordion Item 2 -->
+<div class="glass-card rounded-xl overflow-hidden accordion-item" onclick="toggleAccordion(this)">
+<div class="flex justify-between items-center p-4">
+<span class="text-body-md font-medium">Hardware Acceleration</span>
+<span class="material-symbols-outlined chevron-icon transition-transform">expand_more</span>
+</div>
+<div class="accordion-content bg-surface-container-low/50">
+<div class="p-4 text-body-md text-on-surface-variant leading-relaxed">
+                                We support WebGPU and CUDA backends. Check your system settings to ensure your discrete GPU is recognized by the Vibe Kernel for 40% faster inference.
+                            </div>
+</div>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<h2 class="text-label-caps font-label-caps text-on-surface-variant">API &amp; Data Architecture</h2>
+<div class="space-y-3">
+<!-- Accordion Item 3 -->
+<div class="glass-card rounded-xl overflow-hidden accordion-item" onclick="toggleAccordion(this)">
+<div class="flex justify-between items-center p-4">
+<span class="text-body-md font-medium">Token Management</span>
+<span class="material-symbols-outlined chevron-icon transition-transform">expand_more</span>
+</div>
+<div class="accordion-content bg-surface-container-low/50">
+<div class="p-4 text-body-md text-on-surface-variant leading-relaxed">
+                                Tokens are refreshed every 24 hours. Use the <code class="font-label-md text-neon-cyan">/refresh</code> endpoint to manually cycle keys if a security breach is suspected.
+                            </div>
+</div>
+</div>
+<!-- Accordion Item 4 -->
+<div class="glass-card rounded-xl overflow-hidden accordion-item" onclick="toggleAccordion(this)">
+<div class="flex justify-between items-center p-4">
+<span class="text-body-md font-medium">WebSocket Latency</span>
+<span class="material-symbols-outlined chevron-icon transition-transform">expand_more</span>
+</div>
+<div class="accordion-content bg-surface-container-low/50">
+<div class="p-4 text-body-md text-on-surface-variant leading-relaxed">
+                                Standard latency is sub-50ms. If you experience lag, verify your regional endpoint affinity settings in the project dashboard.
+                            </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Resource Cards -->
+<section class="px-margin-mobile pb-24 grid grid-cols-1 gap-gutter">
+<div class="glass-card rounded-2xl p-6 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-40 transition-opacity">
+<span class="material-symbols-outlined text-primary" style="font-size: 48px;">description</span>
+</div>
+<div class="relative z-10 space-y-4">
+<h3 class="text-headline-md font-headline-md text-on-surface">Technical Whitepaper</h3>
+<p class="text-body-md text-on-surface-variant">Deep dive into the neural-symbolic architecture of Vibe Coding Protocol v2.0.</p>
+<a class="inline-flex items-center text-primary font-label-md" href="#">
+                        Read Manuscript
+                        <span class="material-symbols-outlined ml-2" style="font-size: 16px;">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="glass-card rounded-2xl p-6 relative overflow-hidden group border-primary/20">
+<div class="absolute -bottom-8 -right-8 w-32 h-32 bg-secondary/10 rounded-full blur-3xl"></div>
+<div class="relative z-10 space-y-4">
+<div class="flex items-center gap-2 text-neon-violet">
+<span class="material-symbols-outlined">groups</span>
+<span class="text-label-caps font-label-caps">Developer Community</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface">Community Discord</h3>
+<p class="text-body-md text-on-surface-variant">Join 40k+ architects building the internet-scale era with VibeDocs AI.</p>
+<button class="w-full py-3 bg-secondary-container text-on-secondary-container rounded-xl font-bold flex items-center justify-center gap-2">
+<span>Join Community</span>
+<span class="material-symbols-outlined" style="font-size: 18px;">open_in_new</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (Mobile Tab Bar) -->
+<nav class="fixed bottom-0 left-0 right-0 bg-surface-glass backdrop-blur-2xl border-t border-white/5 flex justify-around items-center h-16 z-50 md:hidden">
+<div class="flex flex-col items-center gap-1 text-terminal-gray">
+<span class="material-symbols-outlined">help_outline</span>
+<span class="text-[10px] font-label-caps">Support</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-terminal-gray">
+<span class="material-symbols-outlined">folder_open</span>
+<span class="text-[10px] font-label-caps">Docs</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-terminal-gray">
+<span class="material-symbols-outlined">terminal</span>
+<span class="text-[10px] font-label-caps">Intro</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-terminal-gray">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-label-caps">Settings</span>
+</div>
+</nav>
+<!-- FAB Suppression Rule followed: No FAB for Support page per logic -->
+<script>
+        function toggleAccordion(element) {
+            const isActive = element.classList.contains('accordion-active');
+            
+            // Close all other accordions
+            document.querySelectorAll('.accordion-item').forEach(item => {
+                item.classList.remove('accordion-active');
+            });
+
+            // Toggle clicked one
+            if (!isActive) {
+                element.classList.add('accordion-active');
+            }
+        }
+
+        // Active State Logic: Mapping "Support" (this page) to its nav item
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('nav div');
+            tabs.forEach(tab => {
+                const label = tab.querySelector('span:last-child').textContent;
+                if (label === 'Support') {
+                    tab.classList.remove('text-terminal-gray');
+                    tab.classList.add('text-neon-cyan');
+                    tab.querySelector('span:first-child').style.fontVariationSettings = "'FILL' 1";
+                }
+            });
+        });
+    </script>
+</body></html>

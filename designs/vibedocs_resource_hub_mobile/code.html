@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Resource Hub | VibeDocs AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#908fa0",
+                    "surface-container-high": "#222a3d",
+                    "primary-fixed": "#e1e0ff",
+                    "surface-tint": "#c0c1ff",
+                    "on-secondary-fixed": "#23005c",
+                    "on-primary-fixed-variant": "#2f2ebe",
+                    "tertiary-container": "#29a195",
+                    "on-secondary": "#3c0091",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "on-surface": "#dae2fd",
+                    "primary": "#c0c1ff",
+                    "secondary-container": "#571bc1",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-container": "#0d0096",
+                    "on-surface-variant": "#c7c4d7",
+                    "on-secondary-container": "#c4abff",
+                    "primary-container": "#8083ff",
+                    "on-error": "#690005",
+                    "background": "#0b1326",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "tertiary": "#6bd8cb",
+                    "surface-container-lowest": "#060e20",
+                    "surface-container-highest": "#2d3449",
+                    "inverse-surface": "#dae2fd",
+                    "on-tertiary-fixed": "#00201d",
+                    "on-background": "#dae2fd",
+                    "surface-bright": "#31394d",
+                    "inverse-primary": "#494bd6",
+                    "surface-container": "#171f33",
+                    "surface-dim": "#0b1326",
+                    "primary-fixed-dim": "#c0c1ff",
+                    "surface": "#0b1326",
+                    "tertiary-fixed": "#89f5e7",
+                    "outline-variant": "#464554",
+                    "error": "#ffb4ab",
+                    "tertiary-fixed-dim": "#6bd8cb",
+                    "on-tertiary-fixed-variant": "#005049",
+                    "error-container": "#93000a",
+                    "on-tertiary-container": "#00302b",
+                    "on-tertiary": "#003732",
+                    "on-primary-fixed": "#07006c",
+                    "surface-variant": "#2d3449",
+                    "secondary": "#d0bcff",
+                    "inverse-on-surface": "#283044",
+                    "secondary-fixed": "#e9ddff",
+                    "surface-container-low": "#131b2e",
+                    "on-primary": "#1000a9",
+                    "neon-cyan": "#6bd8cb",
+                    "neon-violet": "#d0bcff",
+                    "terminal-gray": "#908fa0",
+                    "surface-glass": "rgba(11, 19, 38, 0.08)"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1440px",
+                    "margin-mobile": "16px",
+                    "unit": "4px",
+                    "margin-desktop": "40px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Geist"],
+                    "label-sm": ["JetBrains Mono"],
+                    "label-md": ["JetBrains Mono"],
+                    "display": ["Geist"],
+                    "headline-lg-mobile": ["Geist"],
+                    "headline-lg": ["Geist"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .etched-border {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .radial-glow {
+            background: radial-gradient(circle at 50% 0%, rgba(107, 216, 203, 0.15) 0%, transparent 70%);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-neon-cyan/30">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface-glass backdrop-blur-xl border-b border-white/10 h-16 flex items-center justify-between px-margin-mobile">
+<div class="flex items-center gap-2">
+<span class="text-headline-md font-headline-md font-bold text-primary tracking-tighter">VibeDocs AI</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-32 px-margin-mobile max-w-container-max mx-auto overflow-x-hidden">
+<!-- Search Section -->
+<section class="mb-10">
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-terminal-gray">search</span>
+</div>
+<input class="w-full h-12 bg-surface-container-lowest/50 border border-outline-variant/30 rounded-xl pl-12 pr-4 text-on-surface focus:outline-none focus:border-neon-cyan/50 focus:ring-1 focus:ring-neon-cyan/50 transition-all backdrop-blur-sm" placeholder="Search protocol documentation..." type="text"/>
+</div>
+</section>
+<!-- Hero Section -->
+<section class="mb-12 text-center relative py-8 overflow-hidden">
+
+<div class="relative z-10">
+<span class="inline-block px-3 py-1 bg-primary/10 text-neon-cyan rounded-full font-label-sm text-label-sm mb-4">V2.0 ALPHA</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-4">Build at the speed of thought</h1>
+<p class="text-on-surface-variant text-body-md max-w-xs mx-auto">Access the complete resource stack for the Vibe Coding Protocol.</p>
+</div>
+</section>
+<!-- Integration Kits -->
+<section class="mb-12">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline-md text-headline-md text-on-surface">Integration Kits</h2>
+<span class="text-neon-cyan font-label-sm text-label-sm">SDK v2.4</span>
+</div>
+<div class="space-y-4">
+<!-- Python Card -->
+<div class="glass-card rounded-2xl p-6 transition-all active:scale-95 duration-200">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-10 h-10 rounded-lg bg-tertiary-container/20 flex items-center justify-center text-neon-cyan">
+<span class="material-symbols-outlined">terminal</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface leading-none">Python</h3>
+<p class="text-terminal-gray text-label-sm font-label-sm mt-1">v3.9+ Required</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-3 flex items-center justify-between border border-white/5">
+<code class="text-label-sm font-label-sm text-neon-cyan truncate">pip install vibedocs-sdk</code>
+<button class="text-terminal-gray hover:text-on-surface ml-2" onclick="navigator.clipboard.writeText('pip install vibedocs-sdk')">
+<span class="material-symbols-outlined text-[20px]">content_copy</span>
+</button>
+</div>
+</div>
+<!-- Node.js Card -->
+<div class="glass-card rounded-2xl p-6 transition-all active:scale-95 duration-200">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-10 h-10 rounded-lg bg-primary-container/20 flex items-center justify-center text-neon-violet">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface leading-none">Node.js</h3>
+<p class="text-terminal-gray text-label-sm font-label-sm mt-1">TypeScript Native</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-3 flex items-center justify-between border border-white/5">
+<code class="text-label-sm font-label-sm text-neon-violet truncate">npm i @vibedocs/core</code>
+<button class="text-terminal-gray hover:text-on-surface ml-2" onclick="navigator.clipboard.writeText('npm i @vibedocs/core')">
+<span class="material-symbols-outlined text-[20px]">content_copy</span>
+</button>
+</div>
+</div>
+<!-- Rust Card -->
+<div class="glass-card rounded-2xl p-6 transition-all active:scale-95 duration-200">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-outline">
+<span class="material-symbols-outlined">shield</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface leading-none">Rust</h3>
+<p class="text-terminal-gray text-label-sm font-label-sm mt-1">Memory Safe</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-3 flex items-center justify-between border border-white/5">
+<code class="text-label-sm font-label-sm text-on-surface truncate">cargo add vibedocs</code>
+<button class="text-terminal-gray hover:text-on-surface ml-2" onclick="navigator.clipboard.writeText('cargo add vibedocs')">
+<span class="material-symbols-outlined text-[20px]">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Master the Protocol -->
+<section class="mb-12">
+<div class="glass-card rounded-2xl p-8 radial-glow border-neon-cyan/10">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2">Master the Protocol</h2>
+<p class="text-on-surface-variant text-body-md mb-8">From zero to production-grade AI agents in under 30 minutes.</p>
+<div class="flex flex-col gap-4">
+<button class="w-full h-14 bg-primary text-on-primary rounded-xl font-headline-md flex items-center justify-center gap-2 transition-transform active:scale-95">
+<span class="material-symbols-outlined">auto_awesome</span>
+                        Go to Guides
+                    </button>
+<button class="w-full h-14 border border-outline-variant/30 text-on-surface rounded-xl font-headline-md flex items-center justify-center gap-2 transition-all active:bg-white/5">
+<span class="material-symbols-outlined">play_circle</span>
+                        Video Tutorials
+                    </button>
+</div>
+</div>
+</section>
+<!-- Community and Security -->
+<section class="grid grid-cols-1 gap-4">
+<div class="glass-card rounded-2xl p-6 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-neon-cyan">folder_open</span>
+<span class="text-label-sm font-label-sm text-terminal-gray">RESOURCES</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-1">Community Hub</h4>
+<p class="text-terminal-gray text-body-md">Join 12k+ engineers building on the protocol.</p>
+</div>
+<button class="mt-2 text-neon-cyan font-label-md text-label-md flex items-center gap-1">
+                    Join Community <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<div class="glass-card rounded-2xl p-6 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-neon-violet">shield</span>
+<span class="text-label-sm font-label-sm text-terminal-gray">SECURITY</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-1">Security Portal</h4>
+<p class="text-terminal-gray text-body-md">Review audit logs and encrypted handshake protocols.</p>
+</div>
+<button class="mt-2 text-neon-violet font-label-md text-label-md flex items-center gap-1">
+                    View Logs <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only Anchor) -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-surface-container/90 backdrop-blur-2xl border-t border-white/5 h-20 md:hidden flex items-center justify-around px-margin-mobile">
+<button class="flex flex-col items-center gap-1 text-terminal-gray">
+<span class="material-symbols-outlined">terminal</span>
+<span class="text-[10px] font-label-sm">Intro</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-terminal-gray">
+<span class="material-symbols-outlined">bolt</span>
+<span class="text-[10px] font-label-sm">Vibe</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-neon-cyan">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">folder_open</span>
+<span class="text-[10px] font-label-sm">Hub</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-terminal-gray">
+<span class="material-symbols-outlined">psychology</span>
+<span class="text-[10px] font-label-sm">Agents</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-terminal-gray">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-label-sm">Settings</span>
+</button>
+</nav>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('touchstart', () => {
+                card.style.transform = 'scale(0.98)';
+                card.style.borderColor = 'rgba(107, 216, 203, 0.3)';
+            });
+            card.addEventListener('touchend', () => {
+                card.style.transform = 'scale(1)';
+                card.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+            });
+        });
+
+        // Copy confirmation effect
+        const copyButtons = document.querySelectorAll('button[onclick*="navigator.clipboard"]');
+        copyButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const icon = btn.querySelector('.material-symbols-outlined');
+                const originalIcon = icon.innerText;
+                icon.innerText = 'check';
+                icon.classList.add('text-neon-cyan');
+                setTimeout(() => {
+                    icon.innerText = originalIcon;
+                    icon.classList.remove('text-neon-cyan');
+                }, 2000);
+            });
+        });
+    </script>
+</body></html>

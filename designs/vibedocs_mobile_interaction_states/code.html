@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VibeDocs AI - Handbook</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=Geist:wght@500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#0b1326",
+                        "surface-container-high": "#222a3d",
+                        "surface-container-lowest": "#060e20",
+                        "on-background": "#dae2fd",
+                        "error-container": "#93000a",
+                        "outline-variant": "#464554",
+                        "surface": "#0b1326",
+                        "inverse-primary": "#494bd6",
+                        "on-error": "#690005",
+                        "on-tertiary-container": "#00302b",
+                        "surface-container-low": "#131b2e",
+                        "inverse-on-surface": "#283044",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed-dim": "#6bd8cb",
+                        "primary-container": "#8083ff",
+                        "inverse-surface": "#dae2fd",
+                        "surface-tint": "#c0c1ff",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed": "#e9ddff",
+                        "primary": "#c0c1ff",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "primary-fixed": "#e1e0ff",
+                        "outline": "#908fa0",
+                        "on-secondary-fixed": "#23005c",
+                        "secondary-container": "#571bc1",
+                        "surface-variant": "#2d3449",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "on-tertiary-fixed-variant": "#005049",
+                        "on-primary-fixed": "#07006c",
+                        "surface-bright": "#31394d",
+                        "on-primary-container": "#0d0096",
+                        "background": "#0b1326",
+                        "tertiary-container": "#29a195",
+                        "on-secondary": "#3c0091",
+                        "on-tertiary-fixed": "#00201d",
+                        "on-surface-variant": "#c7c4d7",
+                        "on-primary": "#1000a9",
+                        "surface-container": "#171f33",
+                        "tertiary-fixed": "#89f5e7",
+                        "surface-container-highest": "#2d3449",
+                        "on-secondary-container": "#c4abff",
+                        "tertiary": "#6bd8cb",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "on-surface": "#dae2fd",
+                        "secondary": "#d0bcff",
+                        "on-tertiary": "#003732",
+                        "neon-cyan": "#6bd8cb",
+                        "neon-violet": "#d0bcff",
+                        "terminal-gray": "#908fa0",
+                        "surface-glass": "rgba(11, 19, 38, 0.5)"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin-desktop": "40px",
+                        "container-max": "1440px",
+                        "unit": "4px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Geist"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-md": ["Geist"],
+                        "label-md": ["JetBrains Mono"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Geist"],
+                        "display": ["Geist"],
+                        "body-md": ["Inter"],
+                        "label-caps": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-caps": ["11px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700", "textTransform": "uppercase"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(11, 19, 38, 0.5);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .etched-border {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(192, 193, 255, 0.3);
+            border-radius: 10px;
+        }
+        .drawer-transition {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+<!-- TopNavBar (JSON Anchor) -->
+<header class="bg-surface-glass backdrop-blur-xl border-b border-white/10 docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-3">
+<button class="lg:hidden text-on-surface hover:bg-surface-container-highest p-2 rounded-lg transition-all" id="menu-toggle">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="text-headline-sm font-headline-sm font-bold text-primary tracking-tighter">VibeDocs AI</div>
+</div>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-neon-cyan font-bold border-b-2 border-neon-cyan pb-1 text-label-caps font-label-caps" href="#">Docs</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors text-label-caps font-label-caps" href="#">Skill Guides</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors text-label-caps font-label-caps" href="#">Roadmap</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors text-label-caps font-label-caps" href="#">Changelog</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-highest cursor-pointer p-2 rounded-full transition-all">dark_mode</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-highest cursor-pointer p-2 rounded-full transition-all">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Mobile Navigation Drawer (Transmuted SideNavBar) -->
+<div class="fixed inset-0 bg-surface-container-lowest/60 backdrop-blur-sm z-[60] hidden opacity-0 transition-opacity duration-300" id="drawer-overlay"></div>
+<aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest/90 backdrop-blur-2xl z-[70] flex flex-col drawer-transition -translate-x-full border-r border-white/5 shadow-2xl" id="side-drawer">
+<div class="p-6 border-b border-white/5 flex justify-between items-center">
+<div>
+<div class="text-headline-sm font-headline-sm text-primary">System Core</div>
+<div class="text-label-sm font-label-sm text-terminal-gray">v2.0.4-alpha</div>
+</div>
+<button class="text-on-surface hover:bg-white/5 p-1 rounded" id="drawer-close">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<nav class="flex-1 overflow-y-auto py-6 px-4 space-y-2">
+<div class="bg-primary-container/10 text-neon-cyan border-r-2 border-neon-cyan flex items-center gap-3 p-3 rounded-l-lg translate-x-1 transition-transform">
+<span class="material-symbols-outlined">terminal</span>
+<span class="text-label-caps font-label-caps">Introduction</span>
+</div>
+<div class="text-terminal-gray hover:text-on-surface flex items-center gap-3 p-3 rounded-lg hover:bg-surface-glass transition-all">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="text-label-caps font-label-caps">Core Concepts</span>
+</div>
+<div class="text-terminal-gray hover:text-on-surface flex items-center gap-3 p-3 rounded-lg hover:bg-surface-glass transition-all">
+<span class="material-symbols-outlined">bolt</span>
+<span class="text-label-caps font-label-caps">Vibe Coding</span>
+</div>
+<div class="text-terminal-gray hover:text-on-surface flex items-center gap-3 p-3 rounded-lg hover:bg-surface-glass transition-all">
+<span class="material-symbols-outlined">psychology</span>
+<span class="text-label-caps font-label-caps">AI Agents</span>
+</div>
+<div class="text-terminal-gray hover:text-on-surface flex items-center gap-3 p-3 rounded-lg hover:bg-surface-glass transition-all">
+<span class="material-symbols-outlined">folder_open</span>
+<span class="text-label-caps font-label-caps">Resource Hub</span>
+</div>
+<div class="text-terminal-gray hover:text-on-surface flex items-center gap-3 p-3 rounded-lg hover:bg-surface-glass transition-all">
+<span class="material-symbols-outlined">shield</span>
+<span class="text-label-caps font-label-caps">Security</span>
+</div>
+</nav>
+<div class="p-6 border-t border-white/5 space-y-4">
+<button class="w-full bg-primary-container text-on-primary-container font-bold py-3 rounded-lg text-label-caps font-label-caps transition-all active:scale-95 scale-95 shadow-[0_0_20px_rgba(128,131,255,0.6)] border-white/20">Join Community</button>
+<div class="flex justify-around pt-2">
+<div class="flex flex-col items-center gap-1 text-terminal-gray hover:text-on-surface transition-colors cursor-pointer">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-label-caps">Settings</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-terminal-gray hover:text-on-surface transition-colors cursor-pointer">
+<span class="material-symbols-outlined">help_outline</span>
+<span class="text-[10px] font-label-caps">Support</span>
+</div>
+</div>
+</div>
+</aside>
+<main class="min-h-screen pt-8 px-margin-mobile pb-24 max-w-4xl mx-auto space-y-12">
+<!-- Hero Section -->
+<section class="space-y-6 relative">
+<div class="absolute -top-24 -left-12 w-64 h-64 bg-primary/10 blur-[100px] rounded-full"></div>
+<div class="space-y-2">
+<div class="text-primary text-label-caps font-label-caps tracking-widest flex items-center gap-2">
+<span class="w-8 h-px bg-primary/50"></span>
+                    THE HANDBOOK
+                </div>
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile lg:text-display lg:font-display text-on-surface leading-tight">
+                    Architecting the <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-violet">Vibe Layer</span>.
+                </h1>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-2xl leading-relaxed">
+                Welcome to the VibeDocs AI Protocol documentation. This guide explores the intersection of intent-driven development, LLM agency, and real-time refractive UI structures.
+            </p>
+</section>
+<!-- Bento Grid Handbook Sections -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Code Block Component -->
+<div class="glass-panel rounded-xl p-6 flex flex-col gap-4 etched-border relative">
+<div class="flex justify-between items-center">
+<span class="text-label-sm font-label-sm text-neon-cyan uppercase">Core Initialize</span>
+<span class="material-symbols-outlined text-terminal-gray text-sm">content_copy</span>
+<div class="absolute right-12 top-6 bg-neon-cyan text-on-primary-container text-[10px] font-bold px-2 py-1 rounded animate-bounce shadow-[0_0_10px_rgba(107,216,203,0.5)]">COPIED!</div></div>
+<div class="bg-surface-container-lowest/80 rounded-lg p-4 font-mono text-sm overflow-x-auto whitespace-nowrap etched-border">
+<div class="flex flex-col gap-1">
+<span class="text-neon-violet">const</span> vibe = <span class="text-neon-cyan">new</span> <span class="text-primary">VibeProtocol</span>({<br/>
+                          intent: <span class="text-secondary">"dynamic_atmosphere"</span>,<br/>
+                          refraction: <span class="text-secondary">0.5</span>,<br/>
+                          agents: [<span class="text-secondary">"coder"</span>, <span class="text-secondary">"visionary"</span>]<br/>
+                        });<br/><br/>
+                        vibe.<span class="text-primary">activate</span>();
+                    </div>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant">Initialize the ambient kernel to start projecting the visual hierarchy across your application context.</p>
+</div>
+<!-- Interactive Holographic Map Area -->
+<div class="glass-panel rounded-xl overflow-hidden flex flex-col etched-border">
+<div class="relative h-48 w-full group">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<div class="text-label-caps font-label-caps text-on-surface">Data Lattice v2.1</div>
+<div class="flex items-center gap-1 text-neon-cyan text-[10px]">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-cyan opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-neon-cyan"></span>
+</span>
+                            LIVE CONNECTED
+                        </div>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-headline-md font-headline-md text-on-surface mb-2">Holographic Projection</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Responsive visual routing through the neural network nodes. Each node represents a distinct agent capability.</p>
+</div>
+</div>
+</section>
+<!-- Information Cards -->
+<section class="space-y-8">
+<h2 class="text-headline-md font-headline-md text-on-surface flex items-center gap-3">
+<span class="w-2 h-6 bg-neon-violet rounded-full"></span>
+                Key Principles
+            </h2>
+<div class="space-y-4">
+<div class="glass-panel p-8 rounded-xl etched-border flex flex-col md:flex-row gap-8 items-center">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
+<span class="material-symbols-outlined text-primary text-3xl">bolt</span>
+</div>
+<div class="space-y-2">
+<h4 class="text-headline-md font-headline-md text-on-surface">Momentum First</h4>
+<p class="text-body-md font-body-md text-on-surface-variant">Our protocol prioritizes immediate visual feedback and zero-latency intent parsing. Development should feel like an extension of thought.</p>
+</div>
+</div>
+<div class="glass-panel p-8 rounded-xl etched-border flex flex-col md:flex-row gap-8 items-center">
+<div class="w-16 h-16 rounded-full bg-neon-cyan/10 flex items-center justify-center shrink-0 border border-neon-cyan/20">
+<span class="material-symbols-outlined text-neon-cyan text-3xl">auto_fix_high</span>
+</div>
+<div class="space-y-2">
+<h4 class="text-headline-md font-headline-md text-on-surface">Refined Aesthetics</h4>
+<p class="text-body-md font-body-md text-on-surface-variant">The 50% glass transparency model ensures content legibility while maintaining a sophisticated, immersive depth across all device layers.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Visual Asset (Shader placeholder) -->
+<section class="h-64 rounded-2xl overflow-hidden glass-panel etched-border relative">
+<div class="absolute inset-0 flex items-center justify-center bg-black/20 pointer-events-none">
+<div class="text-center">
+<div class="text-label-caps font-label-caps text-white mb-2">Neural Fabric Visualization</div>
+<div class="text-headline-md font-headline-md text-white/80">Spatial Awareness v4</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (JSON Anchor) -->
+<footer class="bg-background-deep border-t border-outline-variant/30 relative w-full py-12">
+<div class="grid grid-cols-1 md:grid-cols-4 px-margin-mobile max-w-container-max mx-auto gap-gutter">
+<div class="col-span-1 md:col-span-1 flex flex-col gap-4">
+<div class="text-headline-sm font-headline-sm text-primary">VibeDocs AI</div>
+<p class="text-body-md font-body-md text-terminal-gray leading-relaxed">
+                    © 2024 Vibe Coding Protocol. Engineered for the Internet-Scale Era.
+                </p>
+</div>
+<div class="flex flex-col gap-3">
+<h5 class="text-label-caps font-label-caps text-neon-violet">Network</h5>
+<a class="text-terminal-gray hover:text-neon-cyan transition-colors text-body-md font-body-md" href="#">X.com</a>
+<a class="text-terminal-gray hover:text-neon-cyan transition-colors text-body-md font-body-md" href="#">GitHub</a>
+<a class="text-terminal-gray hover:text-neon-cyan transition-colors text-body-md font-body-md" href="#">Discord</a>
+</div>
+<div class="flex flex-col gap-3">
+<h5 class="text-label-caps font-label-caps text-neon-violet">System</h5>
+<a class="text-terminal-gray hover:text-neon-cyan transition-colors text-body-md font-body-md" href="#">Status</a>
+<a class="text-terminal-gray hover:text-neon-cyan transition-colors text-body-md font-body-md" href="#">Legal</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="text-label-caps font-label-caps text-neon-violet">Newsletter</h5>
+<div class="flex border-b border-white/20 pb-2">
+<input class="bg-transparent border-none text-on-surface focus:ring-0 text-sm w-full" placeholder="agent@vibe.ai" type="email"/>
+<button class="text-neon-cyan"><span class="material-symbols-outlined">arrow_forward</span></button>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const drawerClose = document.getElementById('drawer-close');
+        const sideDrawer = document.getElementById('side-drawer');
+        const drawerOverlay = document.getElementById('drawer-overlay');
+
+        function openDrawer() {
+            sideDrawer.classList.remove('-translate-x-full');
+            drawerOverlay.classList.remove('hidden');
+            setTimeout(() => drawerOverlay.classList.add('opacity-100'), 10);
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeDrawer() {
+            sideDrawer.classList.add('-translate-x-full');
+            drawerOverlay.classList.remove('opacity-100');
+            setTimeout(() => {
+                drawerOverlay.classList.add('hidden');
+            }, 300);
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        menuToggle.addEventListener('click', openDrawer);
+        drawerClose.addEventListener('click', closeDrawer);
+        drawerOverlay.addEventListener('click', closeDrawer);
+
+        // Simple parallax or movement for glass cards
+        document.querySelectorAll('.glass-panel').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body></html>

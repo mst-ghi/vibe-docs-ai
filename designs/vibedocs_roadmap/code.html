@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VibeDocs AI - Project Roadmap</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#ffda53",
+                        "surface-container-highest": "#2e3634",
+                        "outline": "#849490",
+                        "primary-fixed": "#31fde3",
+                        "on-primary-fixed-variant": "#005047",
+                        "neon-cyan": "#23F7DD",
+                        "secondary-container": "#571bc1",
+                        "on-surface": "#dbe4e1",
+                        "primary-container": "#23f7dd",
+                        "background": "#0d1513",
+                        "tertiary-fixed-dim": "#e7c43e",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "on-error-container": "#ffdad6",
+                        "surface-bright": "#323b39",
+                        "secondary": "#d0bcff",
+                        "on-surface-variant": "#b9cac5",
+                        "neon-violet": "#A855F7",
+                        "surface-variant": "#2e3634",
+                        "inverse-surface": "#dbe4e1",
+                        "on-background": "#dbe4e1",
+                        "surface-container-high": "#232c2a",
+                        "on-tertiary-container": "#745f00",
+                        "inverse-on-surface": "#2a3230",
+                        "on-primary-fixed": "#00201c",
+                        "background-deep": "#000000",
+                        "on-primary": "#003730",
+                        "primary": "#e5fff8",
+                        "on-secondary-container": "#c4abff",
+                        "error-container": "#93000a",
+                        "inverse-primary": "#006b5e",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "surface-dim": "#0d1513",
+                        "surface-container-lowest": "#08100e",
+                        "surface-container-low": "#151d1b",
+                        "on-tertiary-fixed-variant": "#554500",
+                        "surface-container": "#19211f",
+                        "terminal-gray": "#A3A3A3",
+                        "surface": "#0d1513",
+                        "on-secondary-fixed": "#23005c",
+                        "tertiary": "#fff8ef",
+                        "surface-tint": "#00dfc7",
+                        "on-secondary": "#3c0091",
+                        "error-red": "#FF4D4D",
+                        "primary-fixed-dim": "#00dfc7",
+                        "secondary-fixed": "#e9ddff",
+                        "outline-variant": "#3a4a46",
+                        "on-tertiary-fixed": "#231b00",
+                        "on-error": "#690005",
+                        "on-primary-container": "#006d61",
+                        "on-tertiary": "#3b2f00",
+                        "tertiary-fixed": "#ffe17a",
+                        "surface-glass": "rgba(255, 255, 255, 0.03)"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "unit": "8px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "16px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "label-caps": ["JetBrains Mono"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "code-md": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-sm": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "code-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .neon-glow-cyan {
+            box-shadow: 0 0 20px rgba(35, 247, 221, 0.2);
+        }
+        .neon-glow-violet {
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+        }
+        .timeline-line {
+            background: linear-gradient(to bottom, transparent, #23F7DD 15%, #A855F7 85%, transparent);
+        }
+        @keyframes pulse-cyan {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+        .pulse-dot {
+            animation: pulse-cyan 2s infinite;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-neon-cyan/30">
+<!-- Header / TopNavBar -->
+<header class="bg-surface-glass backdrop-blur-xl border-b border-white/10 dock full-width top-0 sticky z-50">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-8">
+<a class="text-headline-sm font-headline-sm font-bold text-primary tracking-tighter" href="#">VibeDocs AI</a>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors text-label-caps font-label-caps" href="#">Docs</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors text-label-caps font-label-caps" href="#">Skill Guides</a>
+<a class="text-neon-cyan font-bold border-b-2 border-neon-cyan pb-1 text-label-caps font-label-caps" href="#">Roadmap</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors text-label-caps font-label-caps" href="#">Changelog</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-on-surface transition-all duration-300">dark_mode</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-on-surface transition-all duration-300">account_circle</button>
+<div class="hidden lg:block w-px h-6 bg-white/10 mx-2"></div>
+<div class="hidden lg:flex items-center bg-surface-container-high px-4 py-1.5 rounded-full border border-white/5">
+<span class="material-symbols-outlined text-[20px] text-terminal-gray mr-2">search</span>
+<span class="text-label-caps font-label-caps text-terminal-gray">Search...</span>
+</div>
+</div>
+</div>
+</header>
+<main class="min-h-screen relative overflow-hidden">
+<!-- Background Elements -->
+<div class="absolute top-0 right-0 -z-10 opacity-20 pointer-events-none translate-x-1/4 -translate-y-1/4">
+<img alt="" class="w-[800px] h-auto grayscale brightness-50" src="https://lh3.googleusercontent.com/aida/AP1WRLvt2GdYEf6yJiDm56heoc5hqfNowau7SyKjRfMWGz6BHjyEpZ9llCNFjqz-IAshjQwliqoXc5YLLLMJvkhzpTwI_-BGMyZNQ5VGsoaF0TYurj_iT2OoVARuE02X7QcLq-W9mLtFI236Zv67AOyT2A-ZIhVDZ_VQJEUoxzDlZVQI0ClnH89UoXHQfx48DK89HKJ2obFygdfxQWecQz_jamL6qlUqhp4gO17EGq-4Al_XS2f_6n9_IP26DQ"/>
+</div>
+<section class="max-w-container-max mx-auto px-margin-desktop py-20 relative">
+<!-- Hero Context -->
+<div class="mb-24 max-w-3xl">
+<div class="flex items-center gap-3 mb-6">
+<span class="px-3 py-1 bg-primary-container/10 border border-neon-cyan/20 rounded-full flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-neon-cyan pulse-dot"></span>
+<span class="text-label-caps font-label-caps text-neon-cyan uppercase text-[10px]">Live Progress</span>
+</span>
+<span class="text-terminal-gray text-label-caps font-label-caps text-[10px]">v2.0.4-alpha</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-primary mb-6 leading-tight">
+                    The Vibe Coding <br/><span class="text-neon-cyan">Roadmap</span>
+</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">
+                    A multi-phase protocol for engineering internet-scale AI agents. From foundational environment setup to autonomous production deployments, follow our high-performance trajectory.
+                </p>
+</div>
+<!-- Timeline Structure -->
+<div class="relative">
+<!-- Vertical Progress Line -->
+<div class="absolute left-[32px] md:left-1/2 md:-ml-[1px] top-0 bottom-0 w-[2px] timeline-line hidden md:block"></div>
+<!-- Phase 1: Setup -->
+<div class="relative grid grid-cols-1 md:grid-cols-2 gap-12 mb-32 items-center">
+<div class="md:text-right md:pr-16 order-2 md:order-1">
+<h2 class="text-headline-md font-headline-md text-primary mb-2">Phase 1: Setup</h2>
+<p class="text-label-caps font-label-caps text-neon-cyan mb-6 uppercase tracking-[0.2em]">Environment Foundation</p>
+<div class="glass-card p-6 rounded-xl hover:border-neon-cyan/40 transition-all duration-300 text-left md:inline-block md:max-w-md">
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-neon-cyan mt-1" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<span class="text-body-md font-body-md font-bold block">Agentic Sandbox Isolation</span>
+<span class="text-body-md font-body-md text-terminal-gray">Configure secure Dockerized runtimes for untrusted code execution.</span>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-neon-cyan mt-1" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<span class="text-body-md font-body-md font-bold block">LLM Context Mapping</span>
+<span class="text-body-md font-body-md text-terminal-gray">Establish vector-embedded project knowledge bases.</span>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="flex justify-center order-1 md:order-2 relative">
+<div class="w-16 h-16 rounded-full bg-background-deep border-4 border-neon-cyan neon-glow-cyan z-10 flex items-center justify-center absolute -left-4 md:left-auto md:right-[-41px] top-4 md:top-1/2 md:-translate-y-1/2">
+<span class="material-symbols-outlined text-neon-cyan">terminal</span>
+</div>
+<div class="relative w-full aspect-square max-w-sm rounded-full overflow-hidden border border-white/5">
+<img alt="" class="w-full h-full object-cover scale-150 rotate-45 hover:scale-175 transition-transform duration-1000" data-alt="A 3D glass planet showing intricate glowing circuit networks beneath the surface. Vibrant neon cyan lighting accents the planetary rings and continents. The atmosphere is dark space black, emphasizing the holographic depth and precision of the engineering." src="https://lh3.googleusercontent.com/aida/AP1WRLvt2GdYEf6yJiDm56heoc5hqfNowau7SyKjRfMWGz6BHjyEpZ9llCNFjqz-IAshjQwliqoXc5YLLLMJvkhzpTwI_-BGMyZNQ5VGsoaF0TYurj_iT2OoVARuE02X7QcLq-W9mLtFI236Zv67AOyT2A-ZIhVDZ_VQJEUoxzDlZVQI0ClnH89UoXHQfx48DK89HKJ2obFygdfxQWecQz_jamL6qlUqhp4gO17EGq-4Al_XS2f_6n9_IP26DQ"/>
+</div>
+</div>
+</div>
+<!-- Phase 2: Coding -->
+<div class="relative grid grid-cols-1 md:grid-cols-2 gap-12 mb-32 items-center">
+<div class="flex justify-center relative">
+<div class="w-16 h-16 rounded-full bg-background-deep border-4 border-neon-violet neon-glow-violet z-10 flex items-center justify-center absolute -left-4 md:left-[-41px] top-4 md:top-1/2 md:-translate-y-1/2">
+<span class="material-symbols-outlined text-neon-violet">bolt</span>
+</div>
+<div class="relative w-full aspect-square max-w-sm rounded-full overflow-hidden border border-white/5">
+<img alt="" class="w-full h-full object-cover scale-110 -rotate-12 hover:scale-125 transition-transform duration-1000 hue-rotate-[240deg]" data-alt="A futuristic 3D sphere made of transparent glass and shimmering purple data streams. Floating holographic widgets and code snippets orbit the sphere. The lighting is dominated by deep violet and magenta neons, creating a sense of active agentic energy and high-performance computation." src="https://lh3.googleusercontent.com/aida/AP1WRLvt2GdYEf6yJiDm56heoc5hqfNowau7SyKjRfMWGz6BHjyEpZ9llCNFjqz-IAshjQwliqoXc5YLLLMJvkhzpTwI_-BGMyZNQ5VGsoaF0TYurj_iT2OoVARuE02X7QcLq-W9mLtFI236Zv67AOyT2A-ZIhVDZ_VQJEUoxzDlZVQI0ClnH89UoXHQfx48DK89HKJ2obFygdfxQWecQz_jamL6qlUqhp4gO17EGq-4Al_XS2f_6n9_IP26DQ"/>
+</div>
+</div>
+<div class="md:pl-16">
+<h2 class="text-headline-md font-headline-md text-primary mb-2">Phase 2: Coding</h2>
+<p class="text-label-caps font-label-caps text-neon-violet mb-6 uppercase tracking-[0.2em]">Agentic Engineering</p>
+<div class="glass-card p-6 rounded-xl hover:border-neon-violet/40 transition-all duration-300">
+<div class="mb-6 bg-surface-container-lowest p-4 rounded-lg border border-white/5">
+<p class="text-code-md font-code-md text-on-surface-variant mb-2">// Vibe Coding Protocol v2</p>
+<p class="text-code-md font-code-md text-neon-cyan">const <span class="text-neon-violet">agent</span> = <span class="text-on-surface">new</span> AI_Architect({</p>
+<p class="text-code-md font-code-md ml-4 text-on-surface">mode: <span class="text-tertiary-container">'autonomous'</span>,</p>
+<p class="text-code-md font-code-md ml-4 text-on-surface">depth: <span class="text-neon-cyan">1.0</span></p>
+<p class="text-code-md font-code-md text-neon-cyan">});</p>
+</div>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-neon-violet mt-1">auto_awesome</span>
+<div>
+<span class="text-body-md font-body-md font-bold block">Refactoring Synthesis</span>
+<span class="text-body-md font-body-md text-terminal-gray">Continuous optimization loops driven by agent reflection.</span>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-neon-violet mt-1">psychology</span>
+<div>
+<span class="text-body-md font-body-md font-bold block">Multi-Agent Handshakes</span>
+<span class="text-body-md font-body-md text-terminal-gray">Synchronized coordination between specialized AI roles.</span>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Phase 3: Testing -->
+<div class="relative grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div class="md:text-right md:pr-16 order-2 md:order-1">
+<h2 class="text-headline-md font-headline-md text-primary mb-2">Phase 3: Testing</h2>
+<p class="text-label-caps font-label-caps text-on-surface-variant mb-6 uppercase tracking-[0.2em]">Validation &amp; Scale</p>
+<div class="glass-card p-6 rounded-xl hover:border-white/20 transition-all duration-300 text-left md:inline-block md:max-w-md">
+<p class="text-body-md font-body-md text-terminal-gray mb-6">
+                                Final stress-testing of AI-generated logic through adversarial simulation and formal verification methods.
+                            </p>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container p-3 rounded border border-white/5">
+<span class="text-label-caps font-label-caps text-on-surface-variant block text-[10px]">SUCCESS RATE</span>
+<span class="text-headline-sm font-headline-sm text-neon-cyan">99.8%</span>
+</div>
+<div class="bg-surface-container p-3 rounded border border-white/5">
+<span class="text-label-caps font-label-caps text-on-surface-variant block text-[10px]">COVERAGE</span>
+<span class="text-headline-sm font-headline-sm text-neon-violet">Full</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-center order-1 md:order-2 relative">
+<div class="w-16 h-16 rounded-full bg-background-deep border-4 border-terminal-gray z-10 flex items-center justify-center absolute -left-4 md:left-auto md:right-[-41px] top-4 md:top-1/2 md:-translate-y-1/2">
+<span class="material-symbols-outlined text-terminal-gray">shield</span>
+</div>
+<div class="relative w-full aspect-square max-w-sm rounded-full overflow-hidden border border-white/5">
+<img alt="" class="w-full h-full object-cover scale-150 grayscale opacity-40 hover:opacity-100 hover:scale-110 transition-all duration-1000" data-alt="A monochromatic, dark-toned glass sphere floating in a foggy, mysterious environment. The sphere acts as a lens, distorting the complex technical blueprints visible in the background. The aesthetic is elite and professional, representing the rigorous and analytical nature of the system's testing and security phase." src="https://lh3.googleusercontent.com/aida/AP1WRLvt2GdYEf6yJiDm56heoc5hqfNowau7SyKjRfMWGz6BHjyEpZ9llCNFjqz-IAshjQwliqoXc5YLLLMJvkhzpTwI_-BGMyZNQ5VGsoaF0TYurj_iT2OoVARuE02X7QcLq-W9mLtFI236Zv67AOyT2A-ZIhVDZ_VQJEUoxzDlZVQI0ClnH89UoXHQfx48DK89HKJ2obFygdfxQWecQz_jamL6qlUqhp4gO17EGq-4Al_XS2f_6n9_IP26DQ"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 border-t border-white/5 bg-surface-container-lowest/30">
+<div class="max-w-container-max mx-auto px-margin-desktop text-center">
+<h3 class="font-headline-md text-headline-md text-primary mb-8">Ready to sync with the Protocol?</h3>
+<div class="flex flex-col md:flex-row gap-4 justify-center">
+<button class="bg-neon-cyan text-background-deep px-8 py-3 rounded-lg font-bold hover:brightness-110 transition-all duration-300 scale-100 active:scale-95 flex items-center gap-2 justify-center">
+<span class="material-symbols-outlined">rocket_launch</span>
+                        Start Building
+                    </button>
+<button class="border border-neon-violet text-white px-8 py-3 rounded-lg font-bold hover:bg-neon-violet/10 transition-all duration-300 scale-100 active:scale-95 flex items-center gap-2 justify-center">
+<span class="material-symbols-outlined">groups</span>
+                        Join Community
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-background-deep relative w-full py-12 border-t border-outline-variant/30">
+<div class="grid grid-cols-1 md:grid-cols-4 px-margin-desktop max-w-container-max mx-auto gap-gutter">
+<div class="col-span-1 md:col-span-1">
+<h4 class="text-headline-sm font-headline-sm text-primary mb-4">VibeDocs</h4>
+<p class="text-body-md font-body-md text-terminal-gray leading-relaxed mb-6">
+                    © 2024 Vibe Coding Protocol.<br/>Engineered for the Internet-Scale Era.
+                </p>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-label-caps font-label-caps text-on-surface-variant uppercase text-[10px]">Resources</span>
+<a class="text-terminal-gray hover:text-neon-cyan transition-colors text-body-md font-body-md" href="#">Docs</a>
+<a class="text-terminal-gray hover:text-neon-cyan transition-colors text-body-md font-body-md" href="#">Status</a>
+<a class="text-terminal-gray hover:text-neon-cyan transition-colors text-body-md font-body-md" href="#">Roadmap</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-label-caps font-label-caps text-on-surface-variant uppercase text-[10px]">Community</span>
+<a class="text-terminal-gray hover:text-neon-cyan transition-colors text-body-md font-body-md" href="#">X.com</a>
+<a class="text-terminal-gray hover:text-neon-cyan transition-colors text-body-md font-body-md" href="#">GitHub</a>
+<a class="text-terminal-gray hover:text-neon-cyan transition-colors text-body-md font-body-md" href="#">Discord</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-label-caps font-label-caps text-on-surface-variant uppercase text-[10px]">Legal</span>
+<a class="text-terminal-gray hover:text-neon-cyan transition-colors text-body-md font-body-md" href="#">Privacy</a>
+<a class="text-terminal-gray hover:text-neon-cyan transition-colors text-body-md font-body-md" href="#">Terms</a>
+<a class="text-terminal-gray hover:text-neon-cyan transition-colors text-body-md font-body-md" href="#">Policy</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions and subtle parallax
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+            
+            document.querySelectorAll('img').forEach(img => {
+                img.style.transform = `translate(${moveX}px, ${moveY}px) ${img.dataset.originalTransform || ''}`;
+            });
+        });
+
+        // Store original transforms for combination
+        document.querySelectorAll('img').forEach(img => {
+            img.dataset.originalTransform = window.getComputedStyle(img).transform === 'none' ? '' : window.getComputedStyle(img).transform;
+        });
+    </script>
+</body></html>
