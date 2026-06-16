@@ -1,9 +1,10 @@
-# VibeDocs AI
+# Vibe Coding Field Guide
 
-A static, bilingual (English / Persian) documentation website for **Vibe Coding** — the
-practice of AI-assisted, agentic software development. Built with Next.js, TypeScript,
-Tailwind CSS v4, and shadcn-style components, themed with the **Vibe Agentic Glass**
-design system (deep-space glassmorphism with neon cyan/violet accents).
+A static, bilingual (English / Persian) **field guide to coding with AI agents** — practical,
+experience-driven notes on the editors, models, system tools, and day-to-day tricks of
+AI-assisted ("vibe") coding. Built with Next.js, TypeScript, Tailwind CSS v4, and shadcn-style
+components, themed with the **Vibe Agentic Glass** design system (deep-space glassmorphism with
+neon cyan/violet accents) and a CSS-first motion system.
 
 **🔗 Live demo: [vibe-docs-ai.vercel.app](https://vibe-docs-ai.vercel.app/)**
 
@@ -31,6 +32,8 @@ All docs live in [`docs/`](./docs):
 | Styling        | Tailwind CSS v4 + CSS variables                               |
 | UI primitives  | shadcn (base-nova style) on `@base-ui/react`                  |
 | Icons          | `lucide-react`                                                |
+| Fonts          | Hanken Grotesk (Latin) + JetBrains Mono + **Vazirmatn** (Persian), via `next/font` |
+| Motion         | CSS-first: scroll reveals, aurora, glow borders — `prefers-reduced-motion` aware |
 | i18n           | In-app dictionary + context (`en`, `fa`), RTL-aware           |
 | Theming        | Light / dark via a `.dark` class on `<html>`                  |
 | Package manager| **pnpm**                                                      |
@@ -55,25 +58,28 @@ pnpm format       # auto-format
 ```
 src/
   app/
-    layout.tsx          # Root layout: fonts, <Providers>, TopNav + Footer, no-flash script
-    page.tsx            # Home (hero, bento, ecosystem, newsletter)
-    handbook/           # The Vibe Coding Handbook (doc layout w/ sidebar)
-    skill-guides/       # On-demand workflow guides (doc layout)
-    roadmap/            # Phased product roadmap
-    security/           # Security & compliance (doc layout)
-    resources/          # Developer hub: SDKs, API, learn
-    support/            # Support & FAQ (accordions)
-    changelog/          # Versioned changelog timeline
-    globals.css         # Design tokens (light + dark) + glass utilities
+    layout.tsx          # Root layout: fonts (Hanken Grotesk + JetBrains Mono + Vazirmatn), Providers, TopNav + Footer, no-flash script
+    page.tsx            # Home (hero, tool marquee, topic bento, "the one idea", closer)
+    handbook/           # Working with a coding agent: context files, roles vs skills, plan, verify
+    editors/            # Editors & agents — Claude Code, Cursor, Copilot, Windsurf, Aider, Zed, Cline…
+    models/             # Models for coding — Claude vs DeepSeek vs Gemini, the routing pattern
+    toolbox/            # System toolbox — Python, Node, git, ripgrep, jq, gh, Docker, MCP…
+    skill-guides/       # Tricks & workflows (worktrees, screenshots, test-first, task mgmt)
+    loops/              # Loop engineering deep-dive
+    security/           # Running agents safely (lethal trifecta, permission posture)
+    resources/          # Curated links — docs, people, tools
+    support/            # FAQ (accordions)
+    roadmap/            # Roadmap for the guide
+    changelog/          # Changelog for the guide
+    globals.css         # Design tokens (light + dark) + glass/motion utilities
   components/
     providers.tsx       # Theme + locale context, no-flash script
-    site/               # TopNav, Footer, DocShell, shared primitives
+    site/               # TopNav, Footer, DocShell, primitives, motion (Reveal/SpotlightCard)
     ui/                 # shadcn primitives (Button, …)
   i18n/
     config.ts           # Locale list, direction map
     dictionaries.ts     # All page copy, en + fa (en defines the `Dict` type)
   lib/utils.ts          # `cn()` class merger
-designs/                # Design handoff: per-page code.html + screen.png references
 ```
 
 ## How theming works
@@ -98,10 +104,11 @@ const { dict, locale, toggleLocale, dir } = useI18n()
 return <h1>{dict.home.titleLead}</h1>
 ```
 
-Switching to Persian sets `dir="rtl"` and `lang="fa"` on `<html>`. Use logical CSS
-properties (`ps-*`, `pe-*`, `ms-*`, `text-start`) and `rtl:` variants so layouts mirror
-correctly. To add a string, add it to `en` first — TypeScript then forces you to translate
-it in `fa`.
+Switching to Persian sets `dir="rtl"` and `lang="fa"` on `<html>`, which also swaps the sans
+font to **Vazirmatn** (English keeps Hanken Grotesk) via a `[lang="fa"]` rule in `globals.css`.
+Use logical CSS properties (`ps-*`, `pe-*`, `ms-*`, `text-start`) and `rtl:` variants so layouts
+mirror correctly. To add a string, add it to `en` first — TypeScript then forces you to
+translate it in `fa`.
 
 ## Deployment
 

@@ -1,13 +1,27 @@
 "use client"
 
-import { ArrowRight, Bot, Boxes, Layers, Sparkles, Terminal, Users, Zap } from "lucide-react"
+import {
+  ArrowRight,
+  BookOpen,
+  Code,
+  Layers,
+  Repeat,
+  ShieldCheck,
+  Sparkles,
+  Terminal,
+  Users,
+  Wrench,
+  Zap,
+} from "lucide-react"
 import Link from "next/link"
 import { useI18n } from "@/components/providers"
-import { Container, Eyebrow, GlassCard } from "@/components/site/primitives"
-import { Button, buttonVariants } from "@/components/ui/button"
+import { Reveal, SpotlightCard } from "@/components/site/motion"
+import { Container, Eyebrow } from "@/components/site/primitives"
+import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
-const PRINCIPLE_ICONS = [Users, Zap, Layers, Bot]
+const GUIDE_ICONS = [BookOpen, Terminal, Layers, Wrench, Zap, Repeat, ShieldCheck]
+const PRINCIPLE_ICONS = [Code, ShieldCheck, Users]
 
 export default function HomePage() {
   const { dict } = useI18n()
@@ -16,17 +30,18 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="vibe-backdrop relative overflow-hidden">
-        <Container className="grid grid-cols-1 items-center gap-16 py-20 lg:grid-cols-2 lg:py-28">
+      <section className="vibe-backdrop grain relative overflow-hidden">
+        <div className="aurora" aria-hidden />
+        <Container className="relative grid grid-cols-1 items-center gap-16 py-20 lg:grid-cols-2 lg:py-28">
           <div>
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-violet/20 bg-violet/10 px-3 py-1 text-violet">
+            <div className="rise-in mb-6 inline-flex items-center gap-2 rounded-full border border-violet/20 bg-violet/10 px-3 py-1 text-violet">
               <Sparkles className="size-3.5" />
               <span className="label-caps">{t.badge}</span>
             </div>
-            <h1 className="text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
+            <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-balance sm:text-5xl lg:text-6xl">
               {t.titleLead} <span className="text-cyan">{t.titleHighlight}</span> {t.titleTail}
             </h1>
-            <p className="mt-6 max-w-xl text-lg text-muted-foreground">{t.subtitle}</p>
+            <p className="mt-6 max-w-xl text-lg text-muted-foreground text-pretty">{t.subtitle}</p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
                 href="/handbook"
@@ -36,7 +51,7 @@ export default function HomePage() {
                 <ArrowRight className="size-4 rtl:rotate-180" />
               </Link>
               <Link
-                href="/handbook"
+                href="/toolbox"
                 className={cn(
                   buttonVariants({ variant: "outline", size: "lg" }),
                   "border-violet px-6 text-foreground"
@@ -45,25 +60,25 @@ export default function HomePage() {
                 {t.ctaSecondary}
               </Link>
             </div>
-            <div className="mt-16 grid grid-cols-3 gap-8 border-t border-border pt-8">
-              {t.stats.map((stat, i) => (
-                <div key={stat.label}>
+            <div className="mt-16 grid grid-cols-1 gap-6 border-t border-border pt-8 sm:grid-cols-3">
+              {t.pillars.map((p, i) => (
+                <div key={p.label}>
                   <div
                     className={cn(
-                      "text-2xl font-bold",
+                      "text-lg font-bold",
                       i === 0 && "text-cyan",
                       i === 2 && "text-violet"
                     )}
                   >
-                    {stat.value}
+                    {p.value}
                   </div>
-                  <div className="label-caps mt-1 text-muted-foreground">{stat.label}</div>
+                  <div className="label-caps mt-1 text-muted-foreground">{p.label}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Holographic orb */}
+          {/* Abstract terminal orb */}
           <div className="relative flex justify-center lg:justify-end">
             <div className="absolute size-[420px] rounded-full bg-cyan/10 blur-[120px]" />
             <div className="absolute size-[320px] translate-x-12 rounded-full bg-violet/15 blur-[100px]" />
@@ -75,124 +90,146 @@ export default function HomePage() {
             </div>
           </div>
         </Container>
+
+        {/* Marquee of tools & agents */}
+        <div className="relative border-t border-border py-6">
+          <Container>
+            <div className="label-caps mb-4 text-center text-muted-foreground">
+              {t.marqueeLabel}
+            </div>
+          </Container>
+          <div className="marquee">
+            <div className="marquee__track gap-10 pe-10">
+              {[...t.marquee, ...t.marquee].map((name, i) => (
+                <span
+                  key={`${name}-${i}`}
+                  className="font-mono text-sm whitespace-nowrap text-muted-foreground/70"
+                >
+                  {name}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* Core principles bento */}
+      {/* Guides bento */}
       <section className="border-t border-border bg-card/30 py-24">
         <Container>
-          <div className="mb-16 text-center">
-            <Eyebrow className="mb-4">{t.principlesEyebrow}</Eyebrow>
-            <h2 className="mx-auto max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">
-              {t.principlesTitle}
+          <Reveal className="mb-16 max-w-2xl">
+            <Eyebrow className="mb-4">{t.guidesEyebrow}</Eyebrow>
+            <h2 className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+              {t.guidesTitle}
             </h2>
-          </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {t.principles.map((p, i) => {
-              const Icon = PRINCIPLE_ICONS[i]
+            <p className="mt-4 text-muted-foreground text-pretty">{t.guidesLead}</p>
+          </Reveal>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {t.guides.map((g, i) => {
+              const Icon = GUIDE_ICONS[i] ?? BookOpen
               const violet = i % 2 === 1
               return (
-                <GlassCard
-                  key={p.title}
-                  className={cn("flex h-72 flex-col p-8", i === 0 && "md:col-span-2")}
+                <Reveal
+                  key={g.href}
+                  delay={(i % 3) * 90}
+                  className={cn(i === 0 && "lg:col-span-2")}
                 >
-                  <div
-                    className={cn(
-                      "mb-6 grid size-12 place-items-center rounded-lg border",
-                      violet
-                        ? "border-violet/20 bg-violet/10 text-violet"
-                        : "border-cyan/20 bg-cyan/10 text-cyan"
-                    )}
-                  >
-                    <Icon className="size-5" />
-                  </div>
-                  <h3 className="mb-3 text-xl font-semibold">{p.title}</h3>
-                  <p className="text-sm text-muted-foreground">{p.desc}</p>
-                </GlassCard>
+                  <Link href={g.href} className="group block h-full">
+                    <SpotlightCard className="flex h-full flex-col p-7">
+                      <div className="mb-5 flex items-center justify-between">
+                        <div
+                          className={cn(
+                            "grid size-11 place-items-center rounded-lg border",
+                            violet
+                              ? "border-violet/20 bg-violet/10 text-violet"
+                              : "border-cyan/20 bg-cyan/10 text-cyan"
+                          )}
+                        >
+                          <Icon className="size-5" />
+                        </div>
+                        <span className="label-caps text-muted-foreground">{g.tag}</span>
+                      </div>
+                      <h3 className="mb-2 text-lg font-semibold">{g.title}</h3>
+                      <p className="text-sm text-muted-foreground">{g.desc}</p>
+                      <span className="label-caps mt-5 inline-flex items-center gap-1.5 text-cyan opacity-0 transition-opacity group-hover:opacity-100">
+                        Read
+                        <ArrowRight className="size-3 rtl:rotate-180" />
+                      </span>
+                    </SpotlightCard>
+                  </Link>
+                </Reveal>
               )
             })}
-
-            {/* Featured wide card */}
-            <GlassCard className="relative flex h-72 flex-col justify-between overflow-hidden p-8 md:col-span-2 lg:col-span-4">
-              <Boxes className="absolute -right-6 -top-6 size-48 text-cyan/5 rtl:-left-6 rtl:right-auto" />
-              <div className="relative">
-                <span className="label-caps mb-4 inline-block rounded bg-cyan/10 px-2 py-1 text-cyan">
-                  {t.featuredTag}
-                </span>
-                <h3 className="mb-3 text-2xl font-semibold">{t.featuredTitle}</h3>
-                <p className="max-w-2xl text-muted-foreground">{t.featuredDesc}</p>
-              </div>
-              <Link
-                href="/roadmap"
-                className="label-caps relative mt-6 inline-flex w-fit items-center gap-2 border-b border-cyan/30 pb-1 text-cyan transition-colors hover:border-cyan"
-              >
-                {t.featuredCta}
-                <ArrowRight className="size-3.5 rtl:rotate-180" />
-              </Link>
-            </GlassCard>
           </div>
         </Container>
       </section>
 
-      {/* Ecosystem */}
+      {/* The one idea */}
       <section className="border-t border-border py-24">
-        <Container>
-          <div className="mb-16 flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
-            <div>
-              <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-                {t.ecosystemTitle}
-              </h2>
-              <p className="mt-4 max-w-md text-muted-foreground">{t.ecosystemDesc}</p>
-            </div>
-            <Button variant="outline" size="lg" className="w-fit">
-              {t.ecosystemCta}
-              <Terminal className="size-4" />
-            </Button>
-          </div>
-          <div className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-border sm:grid-cols-2 lg:grid-cols-4">
-            {t.ecosystemStats.map((stat) => (
-              <div
-                key={stat.label}
-                className="group bg-card/40 p-8 transition-colors hover:bg-card"
-              >
-                <div className="mb-4 text-5xl font-bold text-muted-foreground/20 transition-colors group-hover:text-cyan/30">
-                  {stat.value}
-                </div>
-                <h4 className="mb-2 text-lg font-semibold">{stat.label}</h4>
-                <p className="text-sm text-muted-foreground">{stat.desc}</p>
-              </div>
-            ))}
+        <Container className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-start">
+          <Reveal>
+            <Eyebrow className="mb-4" tone="violet">
+              {t.principleEyebrow}
+            </Eyebrow>
+            <h2 className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+              {t.principleTitle}
+            </h2>
+            <p className="mt-6 text-muted-foreground text-pretty">{t.principleBody}</p>
+          </Reveal>
+          <div className="flex flex-col gap-4">
+            {t.principlePoints.map((p, i) => {
+              const Icon = PRINCIPLE_ICONS[i] ?? Code
+              return (
+                <Reveal key={p.title} delay={i * 90}>
+                  <div className="glass-card flex items-start gap-4 rounded-xl p-6">
+                    <div className="grid size-10 shrink-0 place-items-center rounded-lg border border-cyan/20 bg-cyan/10 text-cyan">
+                      <Icon className="size-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">{p.title}</h3>
+                      <p className="mt-1 text-sm text-muted-foreground">{p.desc}</p>
+                    </div>
+                  </div>
+                </Reveal>
+              )
+            })}
           </div>
         </Container>
       </section>
 
-      {/* Newsletter */}
+      {/* Closer */}
       <section className="pb-24">
         <Container>
-          <GlassCard className="relative overflow-hidden rounded-2xl p-10 lg:p-20">
-            <div className="absolute -right-24 -top-24 size-96 rounded-full bg-cyan/10 blur-[100px]" />
-            <div className="absolute -bottom-24 -left-24 size-96 rounded-full bg-violet/10 blur-[100px]" />
-            <div className="relative mx-auto flex max-w-2xl flex-col items-center text-center">
-              <h2 className="mb-6 text-3xl font-semibold tracking-tight sm:text-4xl">
-                {t.newsletterTitle}
-              </h2>
-              <form
-                className="mb-8 flex w-full flex-col gap-4 sm:flex-row"
-                onSubmit={(e) => e.preventDefault()}
-              >
-                <input
-                  type="email"
-                  required
-                  placeholder={t.newsletterPlaceholder}
-                  aria-label={t.newsletterPlaceholder}
-                  className="flex-grow rounded-lg border border-border bg-background px-6 py-3 font-mono text-sm outline-none transition-all focus:border-cyan focus:ring-1 focus:ring-cyan"
-                />
-                <Button type="submit" size="lg" className="shrink-0 px-8">
-                  {t.newsletterCta}
-                </Button>
-              </form>
-              <p className="text-sm text-muted-foreground opacity-70">{t.newsletterFineprint}</p>
+          <Reveal>
+            <div className="glow-border rounded-2xl">
+              <div className="glass-card relative overflow-hidden rounded-2xl p-10 lg:p-16">
+                <div className="absolute -end-24 -top-24 size-96 rounded-full bg-cyan/10 blur-[100px]" />
+                <div className="absolute -bottom-24 -start-24 size-96 rounded-full bg-violet/10 blur-[100px]" />
+                <div className="relative max-w-2xl">
+                  <Eyebrow className="mb-4">{t.closerEyebrow}</Eyebrow>
+                  <h2 className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+                    {t.closerTitle}
+                  </h2>
+                  <p className="mt-5 text-muted-foreground text-pretty">{t.closerBody}</p>
+                  <div className="mt-8 flex flex-wrap gap-4">
+                    <Link
+                      href="/handbook"
+                      className={cn(buttonVariants({ size: "lg" }), "neon-glow px-6")}
+                    >
+                      <BookOpen className="size-4" />
+                      {t.closerPrimary}
+                    </Link>
+                    <Link
+                      href="/toolbox"
+                      className={cn(buttonVariants({ variant: "outline", size: "lg" }), "px-6")}
+                    >
+                      <Wrench className="size-4" />
+                      {t.closerSecondary}
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </div>
-          </GlassCard>
+          </Reveal>
         </Container>
       </section>
     </>

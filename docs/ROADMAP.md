@@ -52,19 +52,30 @@ Status legend: ✅ done · 🚧 in progress · ⬜ planned
 - ✅ `AGENTS.md` for AI agents (always-on rules + workflows)
 - ✅ `ROADMAP.md` (this file)
 
-## Phase 5 — Deployment ⬜
+## Phase 5 — Deployment ✅
 
-- ⬜ Connect repository to Vercel and deploy
-- ⬜ Verify static `out/` renders on the Vercel CDN
-- ⬜ Configure production domain
+- ✅ Connected to Vercel; live at [vibe-docs-ai.vercel.app](https://vibe-docs-ai.vercel.app/)
+- ✅ Static `out/` renders on the Vercel CDN
+- ⬜ Custom production domain (optional)
+
+## Phase 6 — Content rebuild ✅
+
+The original site shipped with placeholder, fictional "VibeDocs Protocol" copy (fake SDKs,
+invented stats, compliance theater). Phase 6 replaced it end to end with real,
+experience-driven content — research-backed and current as of mid-2026.
+
+- ✅ Rewrote home + handbook around real, model-agnostic practice
+- ✅ New pages: **Editors & agents**, **Models for coding**, **System toolbox**
+- ✅ Reframed Skill Guides → **Tricks & workflows**; Security → **Running agents safely**
+- ✅ Real **Resources** (curated links), **Support** (FAQ), and a real Changelog + Roadmap for the guide
+- ✅ CSS-first **motion system** (scroll reveals, aurora, glow borders, marquee)
+- ✅ Persian typography via **Vazirmatn**
+- ✅ Removed the `designs/` handoff folder; refreshed `README` + `docs/`
 
 ## Backlog / future ideas ⬜
 
-- ⬜ Real client-side search (e.g. an index over handbook content) — the search inputs are
-  currently presentational
-- ⬜ Functional newsletter/contact submission (needs an external form endpoint, since the
-  app is statically exported)
+- ⬜ Real client-side search / command palette (⌘K) over the guide content
 - ⬜ More locales beyond `en`/`fa`
-- ⬜ MDX-driven handbook so long-form content lives in content files, not the dictionary
+- ⬜ MDX-driven long-form so content lives in content files, not the dictionary
 - ⬜ Per-page `<meta>`/OpenGraph and a sitemap
-- ⬜ Persist nav search → command palette (⌘K)
+- ⬜ More worked examples — real transcripts and before/after diffs

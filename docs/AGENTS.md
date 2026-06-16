@@ -1,15 +1,16 @@
-# AGENTS.md — Working on VibeDocs AI with an AI agent
+# AGENTS.md — Working on the Vibe Coding Field Guide with an AI agent
 
 This file is the **always-on rule set** for AI coding agents (Claude, Cursor, etc.)
-working in this repository. It follows the Roles-vs-Skills convention described in the
-[handbook](../designs/vibe_coding_handbook.md): the rules below are invariant constraints;
-multi-step tasks are described as workflows at the end.
+working in this repository. The rules below are invariant constraints; multi-step tasks
+are described as workflows at the end.
 
 ## What this project is
 
 A **static** (`output: "export"`), **bilingual** (English + Persian/RTL), **multi-theme**
-(light + dark) Next.js documentation site for "Vibe Coding". Dark-first glassmorphism
-("Vibe Agentic Glass"). See [README.md](../README.md) for the full stack and structure.
+(light + dark) Next.js **field guide to coding with AI agents** — practical, experience-driven
+content on editors, models, system tools, and day-to-day tricks. Dark-first glassmorphism
+("Vibe Agentic Glass") with a CSS-first motion system. See [README.md](../README.md) for the
+full stack and structure.
 
 ## Always-on rules
 
@@ -31,8 +32,9 @@ A **static** (`output: "export"`), **bilingual** (English + Persian/RTL), **mult
 - Keep files small and feature-focused (< ~300 lines). One page per route folder.
 - Merge class names with `cn()` from `@/lib/utils`. Don't hand-concatenate class strings.
 - Reuse the shared primitives in `src/components/site/primitives.tsx` (`Container`,
-  `Eyebrow`, `GlassCard`, `Chip`, `CodeBlock`, `SectionHeading`) and `DocShell` rather
-  than re-inventing layout.
+  `Eyebrow`, `GlassCard`, `Chip`, `CodeBlock`, `SectionHeading`) and the motion components
+  in `motion.tsx` (`Reveal`, `SpotlightCard`) rather than re-inventing layout. (`DocShell`
+  exists for sidebar doc layouts but is currently unused.)
 
 ### Styling / design system
 
@@ -54,14 +56,15 @@ A **static** (`output: "export"`), **bilingual** (English + Persian/RTL), **mult
   hard `left`/`right`.
 - Components that read `useI18n()` must be Client Components (`"use client"`).
 
-### Design handoff rule
+### Motion
 
-The `designs/` folder is the **source of intent**, not source code.
-
-- **Read** `designs/<page>/code.html` for layout and copy and `screen.png` for the visual.
-- **Never paste raw HTML/CSS** from those files. Translate the semantic intent into the
-  project's React + Tailwind components and tokens.
-- The canonical token reference is `designs/vibe_agentic_glass/DESIGN.md`.
+- Reuse the motion system in `src/components/site/motion.tsx` (`Reveal`, `SpotlightCard`) and
+  the CSS utilities in `globals.css` (`.aurora`, `.grain`, `.glow-border`, `.marquee`,
+  `.rise-in`). Don't reinvent scroll reveals or pointer effects.
+- Animate **only** `transform` and `opacity`. All motion sits behind `prefers-reduced-motion`
+  (a global reset neutralizes it). Don't animate the hero heading — it's the LCP element.
+- Content keeps the honest, experience-driven voice — no invented stats, fake products, or
+  marketing fluff. `/loops` is the quality bar.
 
 ## Verifying your work
 
@@ -81,7 +84,8 @@ globe and sun/moon toggles in the top nav).
 
 1. Create `src/app/<route>/page.tsx` as a `"use client"` component.
 2. Add its copy under a new key in `en` (and translate in `fa`) in `dictionaries.ts`.
-3. Build the UI from shared primitives; for a sidebar doc page wrap in `<DocShell>`.
+3. Build the UI from the shared primitives and motion components, following the hero +
+   sections pattern the existing pages use (e.g. `editors`, `models`, `toolbox`).
 4. Add the route to the nav (`src/components/site/top-nav.tsx`) and/or footer columns.
 5. Run `pnpm lint && pnpm build`.
 

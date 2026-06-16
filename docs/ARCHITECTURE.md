@@ -31,8 +31,9 @@ Browser
 ## 2. Rendering & routing model
 
 - **App Router, one folder per route.** Each page is `src/app/<route>/page.tsx`. Routes:
-  `/` (home), `/handbook`, `/skill-guides`, `/loops`, `/roadmap`, `/security`,
-  `/resources`, `/support`, `/changelog`.
+  `/` (home), `/handbook`, `/editors`, `/models`, `/toolbox`, `/skill-guides`, `/loops`,
+  `/security`, `/resources`, `/support`, `/roadmap`, `/changelog`. The top nav surfaces the
+  first six topics; `roadmap` and `changelog` live in the footer.
 - **Pages are Client Components** (`"use client"`). They have to be, because all copy comes
   from the locale context (§4) and theme/locale toggles are interactive. The static export
   still pre-renders each page's default-locale (English) HTML at build time; the client then
@@ -53,7 +54,8 @@ src/
     site/               Composition layer — app-specific building blocks
       top-nav.tsx       Header: nav links, language + theme toggles, mobile menu
       footer.tsx        Footer columns + social
-      doc-shell.tsx     Sidebar doc layout (Handbook, Skill Guides, Security)
+      motion.tsx        Reveal (scroll-in) + SpotlightCard, via IntersectionObserver
+      doc-shell.tsx     Sidebar doc layout primitive (available, currently unused)
       primitives.tsx    Container, Eyebrow, GlassCard, Chip, CodeBlock, SectionHeading
     ui/                 Primitive layer — shadcn components (Button) on @base-ui/react
   i18n/
@@ -96,6 +98,18 @@ Tailwind utilities (`bg-card`, `text-cyan`) and never hard-code hex.
 `Providers` toggles the `.dark` class on `<html>` and persists it. To avoid a flash of the
 wrong theme, `noFlashScript` — a tiny inline script injected in `<head>` — reads the persisted
 theme/locale and applies the class + `dir` **before first paint**.
+
+**Fonts.** Loaded via `next/font`: Hanken Grotesk (`--font-sans`) and JetBrains Mono
+(`--font-mono`) for Latin, plus **Vazirmatn** (`--font-vazir`) for Persian. A
+`[lang="fa"] { --font-sans: var(--font-vazir) }` rule in `globals.css` swaps the sans face when
+the locale is Persian; Vazirmatn is also a per-glyph fallback so stray Persian renders correctly
+in English layouts. Code blocks stay monospace.
+
+**Motion.** A CSS-first system in `globals.css` (`.reveal`, `.aurora`, `.grain`, `.glow-border`,
+`.marquee`, `.rise-in`) driven by tiny client helpers in `motion.tsx`. It animates only
+`transform`/`opacity`, is gated behind a global `prefers-reduced-motion` reset, ships a
+`<noscript>` fallback so reveal content is visible without JS, and avoids animating the LCP hero
+heading.
 
 ## 6. The static-export contract
 

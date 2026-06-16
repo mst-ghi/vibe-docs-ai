@@ -1,8 +1,12 @@
 "use client"
 
-import { Activity, CheckCircle2, Sparkles, Zap } from "lucide-react"
+import { ArrowRight, ListChecks, Repeat, Wrench, Zap } from "lucide-react"
+import Link from "next/link"
 import { useI18n } from "@/components/providers"
-import { Chip, CodeBlock, Container, Eyebrow, GlassCard } from "@/components/site/primitives"
+import { Reveal, SpotlightCard } from "@/components/site/motion"
+import { Chip, CodeBlock, Container, Eyebrow } from "@/components/site/primitives"
+import { buttonVariants } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 
 export default function SkillGuidesPage() {
   const { dict } = useI18n()
@@ -11,17 +15,18 @@ export default function SkillGuidesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="vibe-backdrop relative overflow-hidden">
-        <Container className="py-16 lg:py-24">
+      <section className="vibe-backdrop grain relative overflow-hidden">
+        <div className="aurora" aria-hidden />
+        <Container className="relative py-16 lg:py-24">
           <div className="max-w-3xl">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan/20 bg-cyan/10 px-3 py-1 text-cyan">
+            <div className="rise-in mb-6 inline-flex items-center gap-2 rounded-full border border-cyan/20 bg-cyan/10 px-3 py-1 text-cyan">
               <Zap className="size-3.5" />
               <span className="label-caps">{t.eyebrow}</span>
             </div>
-            <h1 className="text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
+            <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-balance sm:text-5xl lg:text-6xl">
               {t.title}
             </h1>
-            <p className="mt-6 text-lg text-muted-foreground">{t.lead}</p>
+            <p className="mt-6 text-lg text-muted-foreground text-pretty">{t.lead}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               {t.related.map((skill, i) => (
                 <Chip key={skill} tone={i % 2 === 0 ? "violet" : "cyan"}>
@@ -33,63 +38,80 @@ export default function SkillGuidesPage() {
         </Container>
       </section>
 
-      {/* Live activity */}
-      <section className="border-t border-border py-12">
+      {/* Tricks grid */}
+      <section className="border-t border-border py-20">
         <Container>
-          <GlassCard className="flex items-center justify-between p-5">
-            <div className="flex items-center gap-3">
-              <Activity className="size-5 text-cyan" />
-              <div>
-                <div className="label-caps">{t.liveActivityLabel}</div>
-                <div className="text-sm text-muted-foreground">{t.liveActivitySub}</div>
-              </div>
-            </div>
-            <Chip dot>{t.liveActivityCount}</Chip>
-          </GlassCard>
-        </Container>
-      </section>
-
-      {/* Step 01 */}
-      <section className="border-t border-border bg-card/30 py-20 lg:py-24">
-        <Container>
-          <div className="mb-12 max-w-2xl">
-            <Eyebrow className="mb-4">{t.step1.num}</Eyebrow>
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">{t.step1.title}</h2>
-            <p className="mt-4 text-muted-foreground">{t.step1.desc}</p>
-          </div>
-          <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
-            <CodeBlock fileName={t.step1.terminalLabel} lines={t.step1.terminal} />
-            <GlassCard className="p-7">
-              <span className="label-caps text-violet">{t.step1.instructionsLabel}</span>
-              <ul className="mt-4 flex flex-col gap-4">
-                {t.step1.instructions.map((ins) => (
-                  <li key={ins} className="flex gap-2 text-sm text-muted-foreground">
-                    <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-violet" />
-                    {ins}
-                  </li>
-                ))}
-              </ul>
-            </GlassCard>
+          <Reveal className="mb-12">
+            <Eyebrow>{t.tricksLabel}</Eyebrow>
+          </Reveal>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {t.tricks.map((trick, i) => (
+              <Reveal key={trick.name} delay={(i % 3) * 80}>
+                <SpotlightCard className="flex h-full flex-col p-6">
+                  <div className="mb-3 flex items-center justify-between gap-3">
+                    <h3 className="font-semibold">{trick.name}</h3>
+                    <span className="label-caps shrink-0 text-muted-foreground">{trick.tag}</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">{trick.desc}</p>
+                </SpotlightCard>
+              </Reveal>
+            ))}
           </div>
         </Container>
       </section>
 
-      {/* Step 02 */}
-      <section className="border-t border-border py-20 lg:py-24">
-        <Container className="grid gap-12 lg:grid-cols-[1fr_minmax(0,420px)] lg:items-center">
-          <div>
+      {/* Terminal sample */}
+      <section className="border-t border-border bg-card/30 py-20">
+        <Container className="max-w-3xl">
+          <Reveal>
+            <CodeBlock fileName={t.terminalLabel} lines={t.terminal} />
+          </Reveal>
+        </Container>
+      </section>
+
+      {/* Task management */}
+      <section className="border-t border-border py-24">
+        <Container className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-start">
+          <Reveal>
             <Eyebrow className="mb-4" tone="violet">
-              {t.step2.num}
+              {t.taskEyebrow}
             </Eyebrow>
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">{t.step2.title}</h2>
-            <p className="mt-4 text-muted-foreground">{t.step2.desc}</p>
-          </div>
-          <div className="vibe-backdrop grid h-36 place-items-center rounded-xl border border-border">
-            <Chip dot>
-              <Sparkles className="size-3.5" />
-              {t.step2.badge}
-            </Chip>
-          </div>
+            <h2 className="flex items-center gap-3 text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+              <ListChecks className="size-7 shrink-0 text-violet" />
+              {t.taskTitle}
+            </h2>
+            <p className="mt-4 text-muted-foreground text-pretty">{t.taskBody}</p>
+          </Reveal>
+          <ol className="flex flex-col gap-5">
+            {t.taskSteps.map((step, i) => (
+              <Reveal key={step.slice(0, 16)} delay={i * 80}>
+                <li className="flex gap-4">
+                  <span className="grid size-8 shrink-0 place-items-center rounded-full border border-violet/30 font-mono text-sm text-violet">
+                    {i + 1}
+                  </span>
+                  <p className="pt-1 text-sm text-muted-foreground">{step}</p>
+                </li>
+              </Reveal>
+            ))}
+          </ol>
+        </Container>
+      </section>
+
+      {/* CTA */}
+      <section className="pb-24">
+        <Container className="flex flex-wrap gap-4">
+          <Link href="/loops" className={cn(buttonVariants({ size: "lg" }), "neon-glow px-6")}>
+            <Repeat className="size-4" />
+            {t.ctaPrimary}
+            <ArrowRight className="size-4 rtl:rotate-180" />
+          </Link>
+          <Link
+            href="/toolbox"
+            className={cn(buttonVariants({ variant: "outline", size: "lg" }), "px-6")}
+          >
+            <Wrench className="size-4" />
+            {t.ctaSecondary}
+          </Link>
         </Container>
       </section>
     </>

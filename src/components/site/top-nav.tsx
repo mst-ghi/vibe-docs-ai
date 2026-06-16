@@ -1,33 +1,32 @@
-"use client";
+"use client"
 
-import { Globe, Menu, Moon, Sun, X } from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { useI18n } from "@/components/providers";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { Globe, Menu, Moon, Sun, X } from "lucide-react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { useState } from "react"
+import { useI18n } from "@/components/providers"
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 
 function useNavLinks() {
-  const { dict } = useI18n();
+  const { dict } = useI18n()
   return [
     { href: "/handbook", label: dict.nav.docs },
+    { href: "/editors", label: dict.nav.editors },
+    { href: "/models", label: dict.nav.models },
+    { href: "/toolbox", label: dict.nav.toolbox },
     { href: "/skill-guides", label: dict.nav.skillGuides },
     { href: "/loops", label: dict.nav.loops },
-    { href: "/roadmap", label: dict.nav.roadmap },
-    { href: "/resources", label: dict.nav.resources },
-    { href: "/changelog", label: dict.nav.changelog },
-  ];
+  ]
 }
 
 export function TopNav() {
-  const { dict, theme, toggleTheme, locale, toggleLocale } = useI18n();
-  const pathname = usePathname();
-  const links = useNavLinks();
-  const [open, setOpen] = useState(false);
+  const { dict, theme, toggleTheme, locale, toggleLocale } = useI18n()
+  const pathname = usePathname()
+  const links = useNavLinks()
+  const [open, setOpen] = useState(false)
 
-  const isActive = (href: string) =>
-    pathname === href || pathname.startsWith(`${href}/`);
+  const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`)
 
   return (
     <nav className="sticky top-0 z-50 border-b border-border bg-glass backdrop-blur-xl">
@@ -49,7 +48,7 @@ export function TopNav() {
                   "label-caps transition-colors",
                   isActive(link.href)
                     ? "border-b-2 border-primary text-primary"
-                    : "text-muted-foreground hover:text-foreground",
+                    : "text-muted-foreground hover:text-foreground"
                 )}
               >
                 {link.label}
@@ -68,9 +67,7 @@ export function TopNav() {
             title={dict.nav.toggleLanguage}
           >
             <Globe className="size-4" />
-            <span className="label-caps ml-1 ">
-              {locale === "en" ? "FA" : "EN"}
-            </span>
+            <span className="label-caps ml-1 ">{locale === "en" ? "FA" : "EN"}</span>
           </Button>
           <Button
             variant="ghost"
@@ -79,11 +76,7 @@ export function TopNav() {
             aria-label={dict.nav.toggleTheme}
             title={dict.nav.toggleTheme}
           >
-            {theme === "dark" ? (
-              <Sun className="size-4" />
-            ) : (
-              <Moon className="size-4" />
-            )}
+            {theme === "dark" ? <Sun className="size-4" /> : <Moon className="size-4" />}
           </Button>
           <Button
             variant="ghost"
@@ -110,7 +103,7 @@ export function TopNav() {
                   "rounded-md px-3 py-2 text-sm transition-colors",
                   isActive(link.href)
                     ? "bg-accent text-primary"
-                    : "text-muted-foreground hover:bg-accent hover:text-foreground",
+                    : "text-muted-foreground hover:bg-accent hover:text-foreground"
                 )}
               >
                 {link.label}
@@ -120,5 +113,5 @@ export function TopNav() {
         </div>
       )}
     </nav>
-  );
+  )
 }

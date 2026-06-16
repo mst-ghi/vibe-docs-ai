@@ -1,9 +1,12 @@
 "use client"
 
 import { Bug, Palette, Rocket, Zap } from "lucide-react"
+import Link from "next/link"
 import { useI18n } from "@/components/providers"
+import { Reveal } from "@/components/site/motion"
 import { Chip, Container, Eyebrow, GlassCard } from "@/components/site/primitives"
-import { Button } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 
 function groupIcon(label: string) {
   const l = label.toLowerCase()
@@ -28,7 +31,7 @@ export default function ChangelogPage() {
       <div className="mt-14 max-w-3xl">
         <div className="relative flex flex-col gap-10 border-s border-border ps-8">
           {t.releases.map((release) => (
-            <div key={release.version} className="relative">
+            <Reveal key={release.version} className="relative">
               <span className="absolute -start-[2.55rem] top-1.5 size-3 rounded-full border-2 border-background bg-cyan" />
               <div className="flex flex-wrap items-center gap-3">
                 <h2 className="font-mono text-xl font-bold">{release.version}</h2>
@@ -59,7 +62,7 @@ export default function ChangelogPage() {
                   )
                 })}
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -69,9 +72,9 @@ export default function ChangelogPage() {
           <h2 className="text-xl font-semibold">{t.subscribeTitle}</h2>
           <p className="mt-1 text-sm text-muted-foreground">{t.subscribeDesc}</p>
         </div>
-        <Button size="lg" className="shrink-0">
+        <Link href="/handbook" className={cn(buttonVariants({ size: "lg" }), "shrink-0 px-6")}>
           {t.subscribeCta}
-        </Button>
+        </Link>
       </GlassCard>
     </Container>
   )

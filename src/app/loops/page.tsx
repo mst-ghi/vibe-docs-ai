@@ -30,10 +30,11 @@ export default function LoopsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="vibe-backdrop relative overflow-hidden">
-        <Container className="py-16 lg:py-24">
+      <section className="vibe-backdrop grain relative overflow-hidden">
+        <div className="aurora" aria-hidden />
+        <Container className="relative py-16 lg:py-24">
           <div className="max-w-3xl">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan/20 bg-cyan/10 px-3 py-1 text-cyan">
+            <div className="rise-in mb-6 inline-flex items-center gap-2 rounded-full border border-cyan/20 bg-cyan/10 px-3 py-1 text-cyan">
               <Repeat className="size-3.5" />
               <span className="label-caps">{t.eyebrow}</span>
             </div>
