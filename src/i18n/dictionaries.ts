@@ -109,6 +109,7 @@ const en = {
     ],
   },
   handbook: {
+    eyebrow: "The Handbook",
     title: "Vibe Coding Handbook",
     subtitle:
       "Master the art of agentic engineering. This handbook defines the standard for fluid, visual development in the age of large language models.",
@@ -259,6 +260,7 @@ const en = {
     ctaSecondary: "Join Community",
   },
   skillGuides: {
+    eyebrow: "Skill Guides",
     related: ["Neural Sync Patterns", "Recursive Debugging"],
     relatedLabel: "Related Skillsets",
     title: "On-Demand Workflows",
@@ -769,6 +771,7 @@ const fa: Dict = {
     ],
   },
   handbook: {
+    eyebrow: "کتابچهٔ راهنما",
     title: "راهنمای وایب‌کدینگ",
     subtitle:
       "هنر مهندسی عامل‌محور را بیاموزید. این راهنما استاندارد توسعه‌ی روان و بصری در عصر مدل‌های زبانی بزرگ را تعریف می‌کند.",
@@ -913,6 +916,7 @@ const fa: Dict = {
     ctaSecondary: "پیوستن به انجمن",
   },
   skillGuides: {
+    eyebrow: "راهنمای مهارت‌ها",
     related: ["الگوهای هم‌گام عصبی", "اشکال‌زدایی بازگشتی"],
     relatedLabel: "مهارت‌های مرتبط",
     title: "گردش‌کارهای درخواستی",
